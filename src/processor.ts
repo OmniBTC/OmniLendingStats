@@ -105,13 +105,20 @@ lending_logic
                 "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_core_wormhole_adapter::LendingCoreEvent"
         );
 
-        const receiver = convertToAddress(adapter_event.parsedJson.receiver);
+        let receiver;
         let address_type;
-        if (adapter_event.parsedJson.dst_chain_id === 3) {
-            address_type = "sui:"
+        if ("parsedJson" in adapter_event) {
+            receiver = convertToAddress(adapter_event.parsedJson.receiver);
+            if (adapter_event.parsedJson.dst_chain_id === 3) {
+                address_type = "sui:"
+            } else {
+                address_type = "evm:"
+            }
         } else {
-            address_type = "evm:"
+            receiver = ctx.transaction.transaction.data.sender;
+            address_type = "sui:"
         }
+
 
         ctx.eventLogger.emit("LendingEvent", {
             project: "omnilending",
