@@ -76,9 +76,7 @@ lending_logic
         const pool_id = event.data_decoded.pool_id;
         let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
         const price = await getPriceBySymbol(symbol, ctx.timestamp);
-        if (pool_id === 2) {
-            symbol = "USDC"
-        } else {
+        if (pool_id === 8) {
             symbol = "whUSDCeth"
         }
         const amount = event.data_decoded.amount;
