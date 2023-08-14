@@ -107,7 +107,7 @@ lending_logic
         let address_type;
         if (adapter_event !== undefined) {
             receiver = convertToAddress(adapter_event.parsedJson.receiver);
-            if (adapter_event.parsedJson.dst_chain_id === 3) {
+            if (adapter_event.parsedJson.dst_chain_id === 0) {
                 address_type = "sui:"
             } else {
                 address_type = "evm:"
