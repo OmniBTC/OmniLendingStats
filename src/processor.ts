@@ -3,7 +3,7 @@ import {pool} from "./types/sui/0x1eabed72c53feb3805120a081dc15963c204dc8d091542
 import {CLMM_MAINNET, LENDING, SWAP} from "./helper/address.js";
 import {calculateSwapVol_USD, getOrCreatePool} from "./helper/swap.js";
 import {lending_logic, user_manager} from "./types/sui/omnilending.js";
-import {CALL_TYPE_TO_NAME, convertToAddress, LENDING_DECIMALS, TOKEN_ID_TO_SYMBOL,} from "./helper/lending.js";
+import {CALL_TYPE_TO_NAME, convertToAddress, LENDING_DECIMALS, RAY, TOKEN_ID_TO_SYMBOL,} from "./helper/lending.js";
 import {getPriceBySymbol} from "@sentio/sdk/utils";
 
 pool
@@ -128,6 +128,65 @@ lending_logic
             value,
             message: `User ${user_id} ${call_name} ${amount} ${symbol} with value ${value} USD`,
         });
+
+        // Reserve stats event
+        const reserve_stats_event = ctx.transaction.events.find(
+            (event: { type: any }) =>
+                event.type ==
+                "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent"
+        );
+        if (reserve_stats_event != undefined) {
+            const otoken_amount = reserve_stats_event.parsedJson.otoken_scaled_amount * reserve_stats_event.parsedJson.supply_index / Math.pow(10, RAY + LENDING_DECIMALS);
+            const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
+
+            let otoken_value;
+            let dtoken_value;
+            if (price === undefined) {
+                otoken_value = 0;
+                dtoken_value = 0;
+            } else {
+                otoken_value = otoken_amount * price;
+                dtoken_value = dtoken_amount * price;
+            }
+
+            const borrow_rate = reserve_stats_event.parsedJson.borrow_rate / Math.pow(10, RAY);
+            const supply_rate = reserve_stats_event.parsedJson.supply_rate / Math.pow(10, RAY);
+            ctx.eventLogger.emit("LendingReserveStatsEvent", {
+                project: "omnilending",
+                distinctId: address_type + receiver,
+                otoken_amount,
+                otoken_value,
+                dtoken_amount,
+                dtoken_value,
+                borrow_rate,
+                supply_rate,
+                call_name,
+                symbol,
+                message: `Reserve ${symbol} update by ${call_name}`,
+            });
+        }
+
+        // User stats event
+
+        const user_stats_event = ctx.transaction.events.find(
+            (event: { type: any }) =>
+                event.type ==
+                "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent"
+        );
+
+        if (user_stats_event !== undefined) {
+            const user_id = Number(user_stats_event.parsedJson.user_id)
+            ctx.eventLogger.emit("LendingUserStatsEvent", {
+                project: "omnilending",
+                distinctId: address_type + receiver,
+                user_id,
+                otoken_scaled_amount: user_stats_event.parsedJson.otoken_scaled_amount,
+                dtoken_scaled_amount: user_stats_event.parsedJson.dtoken_scaled_amount,
+                call_name,
+                symbol,
+                message: `User ${user_id} ${symbol} update by ${call_name}`,
+            });
+        }
     });
 
 user_manager

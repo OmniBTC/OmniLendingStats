@@ -6,3 +6,6 @@ contracts:
   - chain: sui_mainnet
     address: "0x47989e1f044f37b797ed052aba94874872b5dfd2d0d2afb1278f967d0d895867"
     name: omniswap
+  - chain: sui_mainnet
+    address: "0x2c674f67f73bb32ea94123e4a0c509de9f529a2423818b275d9a9019ad83cd04"
+    name: omnilending

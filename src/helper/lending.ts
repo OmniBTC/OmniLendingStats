@@ -1,5 +1,7 @@
 export const LENDING_DECIMALS = 8;
 
+export const RAY = 27;
+
 export const TOKEN_ID_TO_SYMBOL = new Map<number, string>([
     [0, "BTC"],
     [1, "USDT"],
@@ -17,6 +19,9 @@ export const CALL_TYPE_TO_NAME = new Map<number, string>([
     [1, "withdraw"],
     [2, "borrow"],
     [3, "repay"],
+    [4, "liquidate"],
+    [5, "as_collateral"],
+    [6, "cancel_as_collateral"]
 ]);
 
 export function convertToAddress(vec_address: [number]) {
