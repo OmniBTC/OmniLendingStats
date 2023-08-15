@@ -130,12 +130,13 @@ lending_logic
         });
 
         // Reserve stats event
-        const reserve_stats_event = ctx.transaction.events.find(
+        const reserve_stats_events = ctx.transaction.events.filter(
             (event: { type: any }) =>
                 event.type ==
                 "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent"
         );
-        if (reserve_stats_event != undefined) {
+
+        for (const reserve_stats_event of reserve_stats_events) {
             const otoken_amount = reserve_stats_event.parsedJson.otoken_scaled_amount * reserve_stats_event.parsedJson.supply_index / Math.pow(10, RAY + LENDING_DECIMALS);
             const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
 
@@ -151,7 +152,7 @@ lending_logic
 
             const borrow_rate = reserve_stats_event.parsedJson.borrow_rate / Math.pow(10, RAY);
             const supply_rate = reserve_stats_event.parsedJson.supply_rate / Math.pow(10, RAY);
-            ctx.eventLogger.emit("LendingReserveStatsEvent", {
+            ctx.eventLogger.emit("LendReserve", {
                 project: "omnilending",
                 distinctId: address_type + receiver,
                 otoken_amount,
@@ -168,15 +169,15 @@ lending_logic
 
         // User stats event
 
-        const user_stats_event = ctx.transaction.events.find(
-            (event: { type: any }) =>
+        const user_stats_events = ctx.transaction.events.filter(
+            (event: { type: any, parsedJson: any }) =>
                 event.type ==
                 "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent"
         );
 
-        if (user_stats_event !== undefined) {
+        for (const user_stats_event of user_stats_events) {
             const user_id = Number(user_stats_event.parsedJson.user_id)
-            ctx.eventLogger.emit("LendingUserStatsEvent", {
+            ctx.eventLogger.emit("LendUser", {
                 project: "omnilending",
                 distinctId: address_type + receiver,
                 user_id,
