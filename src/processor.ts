@@ -139,6 +139,8 @@ lending_logic
         for (const reserve_stats_event of reserve_stats_events) {
             const otoken_amount = reserve_stats_event.parsedJson.otoken_scaled_amount * reserve_stats_event.parsedJson.supply_index / Math.pow(10, RAY + LENDING_DECIMALS);
             const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
+            const pool_id = reserve_stats_event.parsedJson.pool_id;
+            let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
 
             let otoken_value;
             let dtoken_value;
@@ -177,6 +179,8 @@ lending_logic
 
         for (const user_stats_event of user_stats_events) {
             const user_id = Number(user_stats_event.parsedJson.user_id)
+            const pool_id = user_stats_event.parsedJson.pool_id;
+            let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
             ctx.eventLogger.emit("LendUser", {
                 project: "omnilending",
                 distinctId: address_type + receiver,
