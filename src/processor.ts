@@ -75,6 +75,9 @@ lending_logic
         const call_type = event.data_decoded.call_type;
         const pool_id = event.data_decoded.pool_id;
         let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+        if (symbol == undefined) {
+            return
+        }
         const price = await getPriceBySymbol(symbol, ctx.timestamp);
         if (pool_id === 8) {
             symbol = "whUSDCeth"
@@ -141,7 +144,9 @@ lending_logic
             const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
             const pool_id = reserve_stats_event.parsedJson.pool_id;
             let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
-
+            if (symbol == undefined) {
+                return
+            }
             let otoken_value;
             let dtoken_value;
             if (price === undefined) {
@@ -181,6 +186,9 @@ lending_logic
             const user_id = Number(user_stats_event.parsedJson.user_id)
             const pool_id = user_stats_event.parsedJson.pool_id;
             let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+            if (symbol == undefined) {
+                return
+            }
             ctx.eventLogger.emit("LendUser", {
                 project: "omnilending",
                 distinctId: address_type + receiver,

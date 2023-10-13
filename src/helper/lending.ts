@@ -11,7 +11,9 @@ export const TOKEN_ID_TO_SYMBOL = new Map<number, string>([
     [5, "MATIC"],
     [6, "ARB"],
     [7, "OP"],
-    [8, "USDC"]
+    [8, "USDC"],
+    [9, "AVAX"],
+    [10, "BNB"],
 ]);
 
 export const CALL_TYPE_TO_NAME = new Map<number, string>([
