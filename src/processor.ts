@@ -74,132 +74,137 @@ lending_logic
 
         const call_type = event.data_decoded.call_type;
         const pool_id = event.data_decoded.pool_id;
-        let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
-        if (symbol == undefined) {
-            return
-        }
-        const price = await getPriceBySymbol(symbol, ctx.timestamp);
-        if (pool_id === 8) {
-            symbol = "whUSDCeth"
-        }
-        const amount = event.data_decoded.amount;
-        const user_id = event.data_decoded.user_id;
-        const value =
-            (Number(amount) / Math.pow(10, LENDING_DECIMALS)) * Number(price);
-        const call_name = CALL_TYPE_TO_NAME.get(call_type) as string;
+        try {
+            let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+            if (symbol == undefined) {
+                return
+            }
+            const price = await getPriceBySymbol(symbol, ctx.timestamp);
+            if (pool_id === 8) {
+                symbol = "whUSDCeth"
+            }
+            const amount = event.data_decoded.amount;
+            const user_id = event.data_decoded.user_id;
+            const value =
+                (Number(amount) / Math.pow(10, LENDING_DECIMALS)) * Number(price);
+            const call_name = CALL_TYPE_TO_NAME.get(call_type) as string;
 
-        if (call_type == 0) {
-            ctx.meter
-                .Counter("lending_tvl_counter")
-                .add(value, {token: symbol, project: "omnilending"});
-        }
+            if (call_type == 0) {
+                ctx.meter
+                    .Counter("lending_tvl_counter")
+                    .add(value, {token: symbol, project: "omnilending"});
+            }
 
-        if (call_type == 1) {
-            ctx.meter
-                .Counter("lending_tvl_counter")
-                .sub(value, {token: symbol, project: "omnilending"});
-        }
+            if (call_type == 1) {
+                ctx.meter
+                    .Counter("lending_tvl_counter")
+                    .sub(value, {token: symbol, project: "omnilending"});
+            }
 
-        const adapter_event = ctx.transaction.events.find(
-            (event: { type: any }) =>
-                event.type ==
-                "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_core_wormhole_adapter::LendingCoreEvent"
-        );
+            const adapter_event = ctx.transaction.events.find(
+                (event: { type: any }) =>
+                    event.type ==
+                    "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_core_wormhole_adapter::LendingCoreEvent"
+            );
 
-        let receiver;
-        let address_type;
-        if (adapter_event !== undefined) {
-            receiver = convertToAddress(adapter_event.parsedJson.receiver);
-            if (adapter_event.parsedJson.dst_chain_id === 0) {
+            let receiver;
+            let address_type;
+            if (adapter_event !== undefined) {
+                receiver = convertToAddress(adapter_event.parsedJson.receiver);
+                if (adapter_event.parsedJson.dst_chain_id === 0) {
+                    address_type = "sui:"
+                } else {
+                    address_type = "evm:"
+                }
+            } else {
+                receiver = ctx.transaction.transaction.data.sender;
                 address_type = "sui:"
-            } else {
-                address_type = "evm:"
-            }
-        } else {
-            receiver = ctx.transaction.transaction.data.sender;
-            address_type = "sui:"
-        }
-
-
-        ctx.eventLogger.emit("LendingEvent", {
-            project: "omnilending",
-            distinctId: address_type + receiver,
-            user_id,
-            call_name,
-            symbol,
-            amount,
-            value,
-            message: `User ${user_id} ${call_name} ${amount} ${symbol} with value ${value} USD`,
-        });
-
-        // Reserve stats event
-        const reserve_stats_events = ctx.transaction.events.filter(
-            (event: { type: any }) =>
-                event.type ==
-                "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent"
-        );
-
-        for (const reserve_stats_event of reserve_stats_events) {
-            const otoken_amount = reserve_stats_event.parsedJson.otoken_scaled_amount * reserve_stats_event.parsedJson.supply_index / Math.pow(10, RAY + LENDING_DECIMALS);
-            const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
-            const pool_id = reserve_stats_event.parsedJson.pool_id;
-            let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
-            if (symbol == undefined) {
-                return
-            }
-            let otoken_value;
-            let dtoken_value;
-            if (price === undefined) {
-                otoken_value = 0;
-                dtoken_value = 0;
-            } else {
-                otoken_value = otoken_amount * price;
-                dtoken_value = dtoken_amount * price;
             }
 
-            const borrow_rate = reserve_stats_event.parsedJson.borrow_rate / Math.pow(10, RAY);
-            const supply_rate = reserve_stats_event.parsedJson.supply_rate / Math.pow(10, RAY);
-            ctx.eventLogger.emit("LendReserve", {
-                project: "omnilending",
-                distinctId: address_type + receiver,
-                otoken_amount,
-                otoken_value,
-                dtoken_amount,
-                dtoken_value,
-                borrow_rate,
-                supply_rate,
-                call_name,
-                symbol,
-                message: `Reserve ${symbol} update by ${call_name}`,
-            });
-        }
 
-        // User stats event
-
-        const user_stats_events = ctx.transaction.events.filter(
-            (event: { type: any, parsedJson: any }) =>
-                event.type ==
-                "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent"
-        );
-
-        for (const user_stats_event of user_stats_events) {
-            const user_id = Number(user_stats_event.parsedJson.user_id)
-            const pool_id = user_stats_event.parsedJson.pool_id;
-            let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
-            if (symbol == undefined) {
-                return
-            }
-            ctx.eventLogger.emit("LendUser", {
+            ctx.eventLogger.emit("LendingEvent", {
                 project: "omnilending",
                 distinctId: address_type + receiver,
                 user_id,
-                otoken_scaled_amount: user_stats_event.parsedJson.otoken_scaled_amount,
-                dtoken_scaled_amount: user_stats_event.parsedJson.dtoken_scaled_amount,
                 call_name,
                 symbol,
-                message: `User ${user_id} ${symbol} update by ${call_name}`,
+                amount,
+                value,
+                message: `User ${user_id} ${call_name} ${amount} ${symbol} with value ${value} USD`,
             });
+
+            // Reserve stats event
+            const reserve_stats_events = ctx.transaction.events.filter(
+                (event: { type: any }) =>
+                    event.type ==
+                    "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent"
+            );
+
+            for (const reserve_stats_event of reserve_stats_events) {
+                const otoken_amount = reserve_stats_event.parsedJson.otoken_scaled_amount * reserve_stats_event.parsedJson.supply_index / Math.pow(10, RAY + LENDING_DECIMALS);
+                const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
+                const pool_id = reserve_stats_event.parsedJson.pool_id;
+                let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+                if (symbol == undefined) {
+                    return
+                }
+                let otoken_value;
+                let dtoken_value;
+                if (price === undefined) {
+                    otoken_value = 0;
+                    dtoken_value = 0;
+                } else {
+                    otoken_value = otoken_amount * price;
+                    dtoken_value = dtoken_amount * price;
+                }
+
+                const borrow_rate = reserve_stats_event.parsedJson.borrow_rate / Math.pow(10, RAY);
+                const supply_rate = reserve_stats_event.parsedJson.supply_rate / Math.pow(10, RAY);
+                ctx.eventLogger.emit("LendReserve", {
+                    project: "omnilending",
+                    distinctId: address_type + receiver,
+                    otoken_amount,
+                    otoken_value,
+                    dtoken_amount,
+                    dtoken_value,
+                    borrow_rate,
+                    supply_rate,
+                    call_name,
+                    symbol,
+                    message: `Reserve ${symbol} update by ${call_name}`,
+                });
+            }
+
+            // User stats event
+
+            const user_stats_events = ctx.transaction.events.filter(
+                (event: { type: any, parsedJson: any }) =>
+                    event.type ==
+                    "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent"
+            );
+
+            for (const user_stats_event of user_stats_events) {
+                const user_id = Number(user_stats_event.parsedJson.user_id)
+                const pool_id = user_stats_event.parsedJson.pool_id;
+                let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+                if (symbol == undefined) {
+                    return
+                }
+                ctx.eventLogger.emit("LendUser", {
+                    project: "omnilending",
+                    distinctId: address_type + receiver,
+                    user_id,
+                    otoken_scaled_amount: user_stats_event.parsedJson.otoken_scaled_amount,
+                    dtoken_scaled_amount: user_stats_event.parsedJson.dtoken_scaled_amount,
+                    call_name,
+                    symbol,
+                    message: `User ${user_id} ${symbol} update by ${call_name}`,
+                });
+            }
+        } catch (e) {
+            console.log("warning:", e)
         }
+
     });
 
 user_manager
