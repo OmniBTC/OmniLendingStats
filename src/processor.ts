@@ -106,6 +106,8 @@ lending_logic
 
             let receiver;
             let address_type;
+            let src_chain_id;
+            let dst_chain_id;
             if (adapter_event !== undefined) {
                 receiver = convertToAddress(adapter_event.parsedJson.receiver);
                 if (adapter_event.parsedJson.dst_chain_id === 0) {
@@ -113,8 +115,12 @@ lending_logic
                 } else {
                     address_type = "evm:"
                 }
+                src_chain_id = adapter_event.parsedJson.source_chain_id;
+                dst_chain_id = adapter_event.parsedJson.dst_chain_id;
             } else {
                 receiver = ctx.transaction.transaction.data.sender;
+                src_chain_id = 0;
+                dst_chain_id = 0;
                 address_type = "sui:"
             }
 
@@ -127,6 +133,8 @@ lending_logic
                 symbol,
                 amount,
                 value,
+                src_chain_id,
+                dst_chain_id,
                 message: `User ${user_id} ${call_name} ${amount} ${symbol} with value ${value} USD`,
             });
 
