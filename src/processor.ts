@@ -80,10 +80,9 @@ lending_logic
             if (pool_id === 8) {
                 symbol = "whUSDCeth"
             }
-            const amount = event.data_decoded.amount;
+            const amount = Number(event.data_decoded.amount) / Math.pow(10, LENDING_DECIMALS);
             const user_id = event.data_decoded.user_id;
-            const value =
-                (Number(amount) / Math.pow(10, LENDING_DECIMALS)) * Number(price);
+            const value = amount * Number(price);
             const call_name = CALL_TYPE_TO_NAME.get(call_type) as string;
 
             if (call_type == 0) {
