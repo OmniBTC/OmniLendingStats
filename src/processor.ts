@@ -23,7 +23,8 @@ async function queryTreasuryFee(
     ctx: SuiContext,
     dola_pool_id: number
 ): Promise<TreasuryInfo> {
-    let data = await ctx.client.dryRunTransactionBlock(POOL_ID_TO_USER_COLLATERAL[dola_pool_id]);
+    let transactionBlock = POOL_ID_TO_USER_COLLATERAL.get(dola_pool_id) as string;
+    let data = await ctx.client.dryRunTransactionBlock({transactionBlock});
     return {
         dola_pool_id,
         amount: data.events[0].parsedJson.collateral_amount,
@@ -35,6 +36,7 @@ pool
     .bind({
         address: CLMM_MAINNET,
         network: SuiNetwork.MAIN_NET,
+        startCheckpoint: 3716849n
     })
     .onEventSwapEvent(async (event, ctx) => {
         if (ctx.transaction.events?.[0].packageId == SWAP) {
@@ -91,6 +93,7 @@ lending_logic
     .bind({
         address: LENDING,
         network: SuiNetwork.MAIN_NET,
+        startCheckpoint: 3716849n
     })
     .onEventLendingCoreExecuteEvent(async (event, ctx) => {
         ctx.meter.Counter("lending_counter").add(1, {project: "omnilending"});
@@ -254,6 +257,7 @@ user_manager
     .bind({
         address: LENDING,
         network: SuiNetwork.MAIN_NET,
+        startCheckpoint: 3716849n
     })
     .onEventBindUser(async (event, ctx) => {
         console.log("Add Lending Event:", ctx.transaction.digest)
