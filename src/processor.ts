@@ -1,10 +1,35 @@
-import {SuiNetwork} from "@sentio/sdk/sui";
+import {SuiContext, SuiNetwork} from "@sentio/sdk/sui";
 import {pool} from "./types/sui/0x1eabed72c53feb3805120a081dc15963c204dc8d091542592abaf7a35689b2fb.js";
 import {CLMM_MAINNET, LENDING, SWAP} from "./helper/address.js";
 import {calculateSwapVol_USD, getOrCreatePool} from "./helper/swap.js";
 import {lending_logic, user_manager} from "./types/sui/omnilending.js";
-import {CALL_TYPE_TO_NAME, convertToAddress, LENDING_DECIMALS, RAY, TOKEN_ID_TO_SYMBOL,} from "./helper/lending.js";
+import {
+    CALL_TYPE_TO_NAME,
+    convertToAddress,
+    LENDING_DECIMALS,
+    POOL_ID_TO_SYMBOL,
+    POOL_ID_TO_USER_COLLATERAL,
+    RAY,
+} from "./helper/lending.js";
 import {getPriceBySymbol} from "@sentio/sdk/utils";
+
+export interface TreasuryInfo {
+    dola_pool_id: number;
+    amount: number;
+    value: number;
+}
+
+async function queryTreasuryFee(
+    ctx: SuiContext,
+    dola_pool_id: number
+): Promise<TreasuryInfo> {
+    let data = await ctx.client.dryRunTransactionBlock(POOL_ID_TO_USER_COLLATERAL[dola_pool_id]);
+    return {
+        dola_pool_id,
+        amount: data.events[0].parsedJson.collateral_amount,
+        value: data.events[0].parsedJson.collateral_value
+    };
+}
 
 pool
     .bind({
@@ -70,15 +95,26 @@ lending_logic
     .onEventLendingCoreExecuteEvent(async (event, ctx) => {
         ctx.meter.Counter("lending_counter").add(1, {project: "omnilending"});
 
-        console.log("Add Lending Event:", ctx.transaction.digest)
-
         const call_type = event.data_decoded.call_type;
         const pool_id = event.data_decoded.pool_id;
         try {
-            let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+            let symbol = POOL_ID_TO_SYMBOL.get(pool_id) as string;
             const price = await getPriceBySymbol(symbol, ctx.timestamp);
             if (pool_id === 8) {
                 symbol = "whUSDCeth"
+            }
+            let treasury_amount = 0;
+            let treasury_fee = 0;
+
+            try {
+                let treasury_info = await queryTreasuryFee(
+                    ctx,
+                    pool_id
+                )
+                treasury_amount = treasury_info.amount / Math.pow(10, LENDING_DECIMALS);
+                treasury_fee = treasury_info.value / Math.pow(10, LENDING_DECIMALS);
+            } catch (e) {
+                console.log("query treasury warning:", e)
             }
             const amount = Number(event.data_decoded.amount) / Math.pow(10, LENDING_DECIMALS);
             const user_id = event.data_decoded.user_id;
@@ -148,7 +184,7 @@ lending_logic
                 const otoken_amount = reserve_stats_event.parsedJson.otoken_scaled_amount * reserve_stats_event.parsedJson.supply_index / Math.pow(10, RAY + LENDING_DECIMALS);
                 const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
                 const pool_id = reserve_stats_event.parsedJson.pool_id;
-                let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+                let symbol = POOL_ID_TO_SYMBOL.get(pool_id) as string;
                 if (pool_id === 8) {
                     symbol = "whUSDCeth"
                 }
@@ -164,6 +200,7 @@ lending_logic
 
                 const borrow_rate = reserve_stats_event.parsedJson.borrow_rate / Math.pow(10, RAY);
                 const supply_rate = reserve_stats_event.parsedJson.supply_rate / Math.pow(10, RAY);
+
                 ctx.eventLogger.emit("LendReserve", {
                     project: "omnilending",
                     distinctId: address_type + receiver,
@@ -175,6 +212,8 @@ lending_logic
                     supply_rate,
                     call_name,
                     symbol,
+                    treasury_amount,
+                    treasury_fee,
                     message: `Reserve ${symbol} update by ${call_name}`,
                 });
             }
@@ -190,7 +229,7 @@ lending_logic
             for (const user_stats_event of user_stats_events) {
                 const user_id = Number(user_stats_event.parsedJson.user_id)
                 const pool_id = user_stats_event.parsedJson.pool_id;
-                let symbol = TOKEN_ID_TO_SYMBOL.get(pool_id) as string;
+                let symbol = POOL_ID_TO_SYMBOL.get(pool_id) as string;
                 if (pool_id === 8) {
                     symbol = "whUSDCeth"
                 }
