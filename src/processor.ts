@@ -23,6 +23,13 @@ async function queryTreasuryFee(
     ctx: SuiContext,
     dola_pool_id: number
 ): Promise<TreasuryInfo> {
+    if (ctx.checkpoint <= 17899313n) {
+        return {
+            dola_pool_id,
+            amount: 0,
+            value: 0
+        };
+    }
     let transactionBlock = POOL_ID_TO_USER_COLLATERAL.get(dola_pool_id) as string;
     let data = await ctx.client.dryRunTransactionBlock({transactionBlock});
     return {
