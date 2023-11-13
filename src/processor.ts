@@ -10,6 +10,7 @@ import {
     POOL_ID_TO_SYMBOL,
     POOL_ID_TO_USER_COLLATERAL,
     RAY,
+    TREASURY_FACTOR,
 } from "./helper/lending.js";
 import {getPriceBySymbol} from "@sentio/sdk/utils";
 
@@ -113,16 +114,21 @@ lending_logic
             if (pool_id === 8) {
                 symbol = "whUSDCeth"
             }
-            let treasury_amount = 0;
-            let treasury_fee = 0;
+            let treasury_fee_amount = 0;
+            let treasury_fee_value = 0;
+            let treasury_revenue_amount = 0;
+            let treasury_revenue_value = 0;
 
             try {
                 let treasury_info = await queryTreasuryFee(
                     ctx,
                     pool_id
                 )
-                treasury_amount = treasury_info.amount / Math.pow(10, LENDING_DECIMALS);
-                treasury_fee = treasury_info.value / Math.pow(10, LENDING_DECIMALS);
+                treasury_revenue_amount = treasury_info.amount / Math.pow(10, LENDING_DECIMALS);
+                treasury_revenue_value = treasury_info.value / Math.pow(10, LENDING_DECIMALS);
+                let treasury_factor = TREASURY_FACTOR.get(pool_id) as number;
+                treasury_fee_amount = treasury_revenue_amount / treasury_factor;
+                treasury_fee_value = treasury_revenue_value / treasury_factor;
             } catch (e) {
                 console.log("query treasury warning:", e)
             }
@@ -222,8 +228,10 @@ lending_logic
                     supply_rate,
                     call_name,
                     symbol,
-                    treasury_amount,
-                    treasury_fee,
+                    treasury_fee_amount,
+                    treasury_fee_value,
+                    treasury_revenue_amount,
+                    treasury_revenue_value,
                     message: `Reserve ${symbol} update by ${call_name}`,
                 });
             }
