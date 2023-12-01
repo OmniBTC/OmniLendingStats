@@ -132,9 +132,9 @@ lending_logic
             } catch (e) {
                 console.log("query treasury warning:", e)
             }
-            const amount = Number(event.data_decoded.amount) / Math.pow(10, LENDING_DECIMALS);
+            let amount = Number(event.data_decoded.amount) / Math.pow(10, LENDING_DECIMALS);
             const user_id = event.data_decoded.user_id;
-            const value = amount * Number(price);
+            let value = amount * Number(price);
             const call_name = CALL_TYPE_TO_NAME.get(call_type) as string;
 
             if (call_type == 0) {
@@ -168,6 +168,10 @@ lending_logic
                 }
                 src_chain_id = adapter_event.parsedJson.source_chain_id;
                 dst_chain_id = adapter_event.parsedJson.dst_chain_id;
+                if (call_name == "repay") {
+                    amount = Number(adapter_event.parsedJson.amount) / Math.pow(10, LENDING_DECIMALS);
+                    value = amount * Number(price);
+                }
             } else {
                 receiver = ctx.transaction.transaction.data.sender;
                 src_chain_id = 0;
