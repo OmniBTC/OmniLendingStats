@@ -135,7 +135,7 @@ lending_logic
             let amount = Number(event.data_decoded.amount) / Math.pow(10, LENDING_DECIMALS);
             const user_id = event.data_decoded.user_id;
             let value = amount * Number(price);
-            const call_name = CALL_TYPE_TO_NAME.get(call_type) as string;
+            let call_name = CALL_TYPE_TO_NAME.get(call_type) as string;
 
             if (call_type == 0) {
                 ctx.meter
@@ -169,8 +169,23 @@ lending_logic
                 src_chain_id = adapter_event.parsedJson.source_chain_id;
                 dst_chain_id = adapter_event.parsedJson.dst_chain_id;
                 if (call_name == "repay") {
-                    amount = Number(adapter_event.parsedJson.amount) / Math.pow(10, LENDING_DECIMALS);
-                    value = amount * Number(price);
+                    const all_amount = Number(adapter_event.parsedJson.amount) / Math.pow(10, LENDING_DECIMALS);
+                    if (all_amount > amount) {
+                        const supply_amount = all_amount - amount;
+                        const supply_value = supply_amount * Number(price);
+                        ctx.eventLogger.emit("LendingEvent", {
+                            project: "omnilending",
+                            distinctId: address_type + receiver,
+                            user_id,
+                            call_name: "supply",
+                            symbol,
+                            amount: supply_amount,
+                            value: supply_value,
+                            src_chain_id,
+                            dst_chain_id,
+                            message: `User ${user_id} supply ${amount} ${symbol} with value ${value} USD`,
+                        });
+                    }
                 }
             } else {
                 receiver = ctx.transaction.transaction.data.sender;
