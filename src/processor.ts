@@ -183,7 +183,7 @@ lending_logic
                             value: supply_value,
                             src_chain_id,
                             dst_chain_id,
-                            message: `User ${user_id} supply ${amount} ${symbol} with value ${value} USD`,
+                            message: `User ${user_id} supply ${supply_amount} ${symbol} with value ${supply_value} USD`,
                         });
                     }
                 }
