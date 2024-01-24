@@ -53,7 +53,7 @@ pool
     .bind({
         address: CLMM_MAINNET,
         network: SuiNetwork.MAIN_NET,
-        startCheckpoint: 24390000n
+        startCheckpoint: 3716849n
     })
     .onEventSwapEvent(async (event, ctx) => {
         if (ctx.transaction.events?.[0].packageId == SWAP) {
@@ -110,7 +110,7 @@ lending_logic
     .bind({
         address: LENDING,
         network: SuiNetwork.MAIN_NET,
-        startCheckpoint: 24390000n
+        startCheckpoint: 3716849n
     })
     .onEventLendingCoreExecuteEvent(async (event, ctx) => {
         ctx.meter.Counter("lending_counter").add(1, {project: "omnilending"});
@@ -305,7 +305,7 @@ user_manager
     .bind({
         address: LENDING,
         network: SuiNetwork.MAIN_NET,
-        startCheckpoint: 24390000n
+        startCheckpoint: 3716849n
     })
     .onEventBindUser(async (event, ctx) => {
         console.log("Add Lending Event:", ctx.transaction.digest)
