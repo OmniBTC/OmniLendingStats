@@ -228,8 +228,8 @@ lending_logic
 
             for (const reserve_stats_event of reserve_stats_events) {
                 let parsedJson = reserve_stats_event.parsedJson as LendingReserveStatsEvent;
-                const otoken_amount = Number(parsedJson.otoken_scaled_amount * parsedJson.supply_index / BigInt(Math.pow(10, RAY + LENDING_DECIMALS)));
-                const dtoken_amount = Number(parsedJson.dtoken_scaled_amount * parsedJson.borrow_index / BigInt(Math.pow(10, RAY + LENDING_DECIMALS)));
+                const otoken_amount = Number(parsedJson.otoken_scaled_amount) * (Number(parsedJson.supply_index) / Math.pow(10, RAY + LENDING_DECIMALS));
+                const dtoken_amount = Number(parsedJson.dtoken_scaled_amount) * (Number(parsedJson.borrow_index) / Math.pow(10, RAY + LENDING_DECIMALS));
                 const pool_id = parsedJson.pool_id;
                 let symbol = POOL_ID_TO_SYMBOL.get(pool_id) as string;
                 if (pool_id === 8) {
@@ -245,8 +245,8 @@ lending_logic
                     dtoken_value = dtoken_amount * price;
                 }
 
-                const borrow_rate = Number(parsedJson.borrow_rate / BigInt(Math.pow(10, RAY)));
-                const supply_rate = Number(parsedJson.supply_rate / BigInt(Math.pow(10, RAY)));
+                const borrow_rate = Number(parsedJson.borrow_rate) / Math.pow(10, RAY);
+                const supply_rate = Number(parsedJson.supply_rate) / Math.pow(10, RAY);
 
                 ctx.eventLogger.emit("LendReserve", {
                     project: "omnilending",
