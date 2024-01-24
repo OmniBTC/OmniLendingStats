@@ -65,7 +65,7 @@ export const TREASURY_FACTOR = new Map<number, number>([
     [10, 0.23],
 ]);
 
-export function convertToAddress(vec_address: [number]) {
+export function convertToAddress(vec_address: number[]) {
     return (
         "0x" + vec_address.map((num) => num.toString(16).padStart(2, "0")).join("")
     );

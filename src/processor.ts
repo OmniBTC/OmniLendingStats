@@ -2,7 +2,7 @@ import {SuiContext, SuiNetwork} from "@sentio/sdk/sui";
 import {pool} from "./types/sui/0x1eabed72c53feb3805120a081dc15963c204dc8d091542592abaf7a35689b2fb.js";
 import {CLMM_MAINNET, LENDING, SWAP} from "./helper/address.js";
 import {calculateSwapVol_USD, getOrCreatePool} from "./helper/swap.js";
-import {lending_logic, user_manager} from "./types/sui/omnilending.js";
+import {lending_core_wormhole_adapter, lending_logic, user_manager} from "./types/sui/omnilending.js";
 import {
     CALL_TYPE_TO_NAME,
     convertToAddress,
@@ -13,11 +13,19 @@ import {
     TREASURY_FACTOR,
 } from "./helper/lending.js";
 import {getPriceBySymbol} from "@sentio/sdk/utils";
+import LendingReserveStatsEvent = lending_logic.LendingReserveStatsEvent;
+import LendingUserStatsEvent = lending_logic.LendingUserStatsEvent;
+import LendingCoreEvent = lending_core_wormhole_adapter.LendingCoreEvent;
 
 export interface TreasuryInfo {
     dola_pool_id: number;
     amount: number;
     value: number;
+}
+
+export interface TreasuryEvent {
+    collateral_amount: number;
+    collateral_value: number;
 }
 
 async function queryTreasuryFee(
@@ -32,11 +40,12 @@ async function queryTreasuryFee(
         };
     }
     let transactionBlock = POOL_ID_TO_USER_COLLATERAL.get(dola_pool_id) as string;
-    let data = await ctx.client.dryRunTransactionBlock({transactionBlock});
+    let data = (await ctx.client.dryRunTransactionBlock({transactionBlock})).events[0].parsedJson! as TreasuryEvent;
+
     return {
         dola_pool_id,
-        amount: data.events[0].parsedJson.collateral_amount,
-        value: data.events[0].parsedJson.collateral_value
+        amount: data.collateral_amount,
+        value: data.collateral_value
     };
 }
 
@@ -44,7 +53,7 @@ pool
     .bind({
         address: CLMM_MAINNET,
         network: SuiNetwork.MAIN_NET,
-        startCheckpoint: 3716849n
+        startCheckpoint: 24390000n
     })
     .onEventSwapEvent(async (event, ctx) => {
         if (ctx.transaction.events?.[0].packageId == SWAP) {
@@ -75,7 +84,7 @@ pool
 
             ctx.eventLogger.emit("SwapEvent", {
                 project: "omniswap",
-                distinctId: ctx.transaction.transaction.data.sender,
+                distinctId: ctx.transaction.transaction!.data.sender,
                 pool,
                 amount_in,
                 amount_out,
@@ -101,7 +110,7 @@ lending_logic
     .bind({
         address: LENDING,
         network: SuiNetwork.MAIN_NET,
-        startCheckpoint: 3716849n
+        startCheckpoint: 24390000n
     })
     .onEventLendingCoreExecuteEvent(async (event, ctx) => {
         ctx.meter.Counter("lending_counter").add(1, {project: "omnilending"});
@@ -149,7 +158,7 @@ lending_logic
                     .sub(value, {token: symbol, project: "omnilending"});
             }
 
-            const adapter_event = ctx.transaction.events.find(
+            const adapter_event = ctx.transaction.events!.find(
                 (event: { type: any }) =>
                     event.type ==
                     "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_core_wormhole_adapter::LendingCoreEvent"
@@ -160,16 +169,17 @@ lending_logic
             let src_chain_id;
             let dst_chain_id;
             if (adapter_event !== undefined) {
-                receiver = convertToAddress(adapter_event.parsedJson.receiver);
-                if (adapter_event.parsedJson.dst_chain_id === 0) {
+                const parsedJson = adapter_event.parsedJson as LendingCoreEvent;
+                receiver = convertToAddress(parsedJson.receiver);
+                if (parsedJson.dst_chain_id === 0) {
                     address_type = "sui:"
                 } else {
                     address_type = "evm:"
                 }
-                src_chain_id = adapter_event.parsedJson.source_chain_id;
-                dst_chain_id = adapter_event.parsedJson.dst_chain_id;
+                src_chain_id = parsedJson.source_chain_id;
+                dst_chain_id = parsedJson.dst_chain_id;
                 if (call_name == "repay") {
-                    const all_amount = Number(adapter_event.parsedJson.amount) / Math.pow(10, LENDING_DECIMALS);
+                    const all_amount = Number(parsedJson.amount) / Math.pow(10, LENDING_DECIMALS);
                     if (all_amount > amount) {
                         const supply_amount = all_amount - amount;
                         const supply_value = supply_amount * Number(price);
@@ -188,7 +198,7 @@ lending_logic
                     }
                 }
             } else {
-                receiver = ctx.transaction.transaction.data.sender;
+                receiver = ctx.transaction.transaction!.data.sender;
                 src_chain_id = 0;
                 dst_chain_id = 0;
                 address_type = "sui:"
@@ -209,7 +219,7 @@ lending_logic
             });
 
             // Reserve stats event
-            const reserve_stats_events = ctx.transaction.events.filter(
+            const reserve_stats_events = ctx.transaction.events!.filter(
                 (event: { type: any }) =>
                     event.type ==
                     "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent" || event.type ==
@@ -217,9 +227,10 @@ lending_logic
             );
 
             for (const reserve_stats_event of reserve_stats_events) {
-                const otoken_amount = reserve_stats_event.parsedJson.otoken_scaled_amount * reserve_stats_event.parsedJson.supply_index / Math.pow(10, RAY + LENDING_DECIMALS);
-                const dtoken_amount = reserve_stats_event.parsedJson.dtoken_scaled_amount * reserve_stats_event.parsedJson.borrow_index / Math.pow(10, RAY + LENDING_DECIMALS);
-                const pool_id = reserve_stats_event.parsedJson.pool_id;
+                let parsedJson = reserve_stats_event.parsedJson as LendingReserveStatsEvent;
+                const otoken_amount = Number(parsedJson.otoken_scaled_amount * parsedJson.supply_index / BigInt(Math.pow(10, RAY + LENDING_DECIMALS)));
+                const dtoken_amount = Number(parsedJson.dtoken_scaled_amount * parsedJson.borrow_index / BigInt(Math.pow(10, RAY + LENDING_DECIMALS)));
+                const pool_id = parsedJson.pool_id;
                 let symbol = POOL_ID_TO_SYMBOL.get(pool_id) as string;
                 if (pool_id === 8) {
                     symbol = "whUSDCeth"
@@ -234,8 +245,8 @@ lending_logic
                     dtoken_value = dtoken_amount * price;
                 }
 
-                const borrow_rate = reserve_stats_event.parsedJson.borrow_rate / Math.pow(10, RAY);
-                const supply_rate = reserve_stats_event.parsedJson.supply_rate / Math.pow(10, RAY);
+                const borrow_rate = Number(parsedJson.borrow_rate / BigInt(Math.pow(10, RAY)));
+                const supply_rate = Number(parsedJson.supply_rate / BigInt(Math.pow(10, RAY)));
 
                 ctx.eventLogger.emit("LendReserve", {
                     project: "omnilending",
@@ -258,7 +269,7 @@ lending_logic
 
             // User stats event
 
-            const user_stats_events = ctx.transaction.events.filter(
+            const user_stats_events = ctx.transaction.events!.filter(
                 (event: { type: any, parsedJson: any }) =>
                     event.type ==
                     "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent" || event.type ==
@@ -266,8 +277,9 @@ lending_logic
             );
 
             for (const user_stats_event of user_stats_events) {
-                const user_id = Number(user_stats_event.parsedJson.user_id)
-                const pool_id = user_stats_event.parsedJson.pool_id;
+                let parsedJson = user_stats_event.parsedJson as LendingUserStatsEvent;
+                const user_id = Number(parsedJson.user_id)
+                const pool_id = parsedJson.pool_id;
                 let symbol = POOL_ID_TO_SYMBOL.get(pool_id) as string;
                 if (pool_id === 8) {
                     symbol = "whUSDCeth"
@@ -276,8 +288,8 @@ lending_logic
                     project: "omnilending",
                     distinctId: address_type + receiver,
                     user_id,
-                    otoken_scaled_amount: user_stats_event.parsedJson.otoken_scaled_amount,
-                    dtoken_scaled_amount: user_stats_event.parsedJson.dtoken_scaled_amount,
+                    otoken_scaled_amount: parsedJson.otoken_scaled_amount,
+                    dtoken_scaled_amount: parsedJson.dtoken_scaled_amount,
                     call_name,
                     symbol,
                     message: `User ${user_id} ${symbol} update by ${call_name}`,
@@ -293,7 +305,7 @@ user_manager
     .bind({
         address: LENDING,
         network: SuiNetwork.MAIN_NET,
-        startCheckpoint: 3716849n
+        startCheckpoint: 24390000n
     })
     .onEventBindUser(async (event, ctx) => {
         console.log("Add Lending Event:", ctx.transaction.digest)

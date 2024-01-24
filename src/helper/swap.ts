@@ -117,9 +117,14 @@ export async function buildPoolInfo(
     type = obj.data.type;
     //@ts-ignore
     if (obj.data.content.fields.fee_rate) {
-      //@ts-ignore
-      fee_label =
-          (Number(obj.data.content.fields.fee_rate) / 10000).toFixed(2) + "%";
+      let content = obj.data!.content!;
+      if (content.dataType=="moveObject" && 'fee_rate' in content.fields){
+        //@ts-ignore
+        fee_label =
+            (Number(content.fields.fee_rate) / 10000).toFixed(2) + "%";
+      }else{
+        console.log(`no fee label ${pool}`);
+      }
     } else {
       console.log(`no fee label ${pool}`);
     }

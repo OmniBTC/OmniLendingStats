@@ -4,26 +4,22 @@
 
 /* Generated modules for account 0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e */
 
+import { TypeDescriptor, ANY_TYPE } from "@typemove/move";
+import { MoveCoder, TypedEventInstance } from "@typemove/sui";
+
+import { defaultMoveCoder } from "@sentio/sdk/sui";
+
+import { CallFilter, MoveFetchConfig } from "@sentio/sdk/move";
 import {
-  CallFilter,
-  TypeDescriptor,
-  ANY_TYPE,
-  MoveFetchConfig,
-} from "@sentio/sdk/move";
-import {
-  MoveCoder,
-  defaultMoveCoder,
   SuiBindOptions,
   SuiBaseProcessor,
-  TypedEventInstance,
   SuiNetwork,
   TypedFunctionPayload,
   SuiContext,
 } from "@sentio/sdk/sui";
-import { SuiAddress, ModuleClient } from "@sentio/sdk/sui";
 
-import { _0x2 } from "@sentio/sdk/sui/builtin";
-import { _0x1 } from "@sentio/sdk/sui/builtin";
+import { _0x2 } from "@typemove/sui/builtin";
+import { _0x1 } from "@typemove/sui/builtin";
 import * as _0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a from "./0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a.js";
 import * as _0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302 from "./0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302.js";
 
@@ -77,42 +73,32 @@ export class boost extends SuiBaseProcessor {
 
   onEventClaimRewardEvent(
     func: (event: boost.ClaimRewardEventInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): boost {
-    this.onMoveEvent(
-      func,
-      {
-        type: "boost::ClaimRewardEvent",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "boost::ClaimRewardEvent" }, fetchConfig);
     return this;
   }
 
   onEventUpdatePoolRewardEvent(
     func: (event: boost.UpdatePoolRewardEventInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): boost {
     this.onMoveEvent(
       func,
-      {
-        type: "boost::UpdatePoolRewardEvent",
-      },
-      fetchConfig
+      { type: "boost::UpdatePoolRewardEvent" },
+      fetchConfig,
     );
     return this;
   }
 
   onEventUpdateUserRewardEvent(
     func: (event: boost.UpdateUserRewardEventInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): boost {
     this.onMoveEvent(
       func,
-      {
-        type: "boost::UpdateUserRewardEvent",
-      },
-      fetchConfig
+      { type: "boost::UpdateUserRewardEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -125,7 +111,7 @@ export namespace boost {
     dola_user_id: bigint;
     reward_action: number;
     amount: bigint;
-    sender: SuiAddress;
+    sender: string;
   }
 
   export namespace ClaimRewardEvent {
@@ -133,7 +119,7 @@ export namespace boost {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::boost::ClaimRewardEvent";
 
     const TYPE = new TypeDescriptor<ClaimRewardEvent>(
-      ClaimRewardEvent.TYPE_QNAME
+      ClaimRewardEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<ClaimRewardEvent> {
@@ -160,7 +146,7 @@ export namespace boost {
     const TYPE = new TypeDescriptor<RewardPool<any>>(RewardPool.TYPE_QNAME);
 
     export function type<T0>(
-      arg0: TypeDescriptor<T0> = ANY_TYPE
+      arg0: TypeDescriptor<T0> = ANY_TYPE,
     ): TypeDescriptor<RewardPool<T0>> {
       return TYPE.apply(arg0);
     }
@@ -201,7 +187,7 @@ export namespace boost {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::boost::RewardPoolInfos";
 
     const TYPE = new TypeDescriptor<RewardPoolInfos>(
-      RewardPoolInfos.TYPE_QNAME
+      RewardPoolInfos.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<RewardPoolInfos> {
@@ -222,7 +208,7 @@ export namespace boost {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::boost::UpdatePoolRewardEvent";
 
     const TYPE = new TypeDescriptor<UpdatePoolRewardEvent>(
-      UpdatePoolRewardEvent.TYPE_QNAME
+      UpdatePoolRewardEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<UpdatePoolRewardEvent> {
@@ -250,7 +236,7 @@ export namespace boost {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::boost::UpdateUserRewardEvent";
 
     const TYPE = new TypeDescriptor<UpdateUserRewardEvent>(
-      UpdateUserRewardEvent.TYPE_QNAME
+      UpdateUserRewardEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<UpdateUserRewardEvent> {
@@ -298,15 +284,9 @@ export class dola_address extends SuiBaseProcessor {
 
   onEventDolaAddress(
     func: (event: dola_address.DolaAddressInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): dola_address {
-    this.onMoveEvent(
-      func,
-      {
-        type: "dola_address::DolaAddress",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "dola_address::DolaAddress" }, fetchConfig);
     return this;
   }
 }
@@ -350,29 +330,17 @@ export class dola_pool extends SuiBaseProcessor {
 
   onEventDepositPool(
     func: (event: dola_pool.DepositPoolInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): dola_pool {
-    this.onMoveEvent(
-      func,
-      {
-        type: "dola_pool::DepositPool",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "dola_pool::DepositPool" }, fetchConfig);
     return this;
   }
 
   onEventWithdrawPool(
     func: (event: dola_pool.WithdrawPoolInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): dola_pool {
-    this.onMoveEvent(
-      func,
-      {
-        type: "dola_pool::WithdrawPool",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "dola_pool::WithdrawPool" }, fetchConfig);
     return this;
   }
 }
@@ -380,7 +348,7 @@ export class dola_pool extends SuiBaseProcessor {
 export namespace dola_pool {
   export interface DepositPool {
     pool: _0x1.ascii.String;
-    sender: SuiAddress;
+    sender: string;
     amount: bigint;
   }
 
@@ -413,7 +381,7 @@ export namespace dola_pool {
     const TYPE = new TypeDescriptor<Pool<any>>(Pool.TYPE_QNAME);
 
     export function type<T0>(
-      arg0: TypeDescriptor<T0> = ANY_TYPE
+      arg0: TypeDescriptor<T0> = ANY_TYPE,
     ): TypeDescriptor<Pool<T0>> {
       return TYPE.apply(arg0);
     }
@@ -421,7 +389,7 @@ export namespace dola_pool {
 
   export interface WithdrawPool {
     pool: _0x1.ascii.String;
-    receiver: SuiAddress;
+    receiver: string;
     amount: bigint;
   }
 
@@ -461,127 +429,73 @@ export class genesis extends SuiBaseProcessor {
 
   onEventVersion(
     func: (event: genesis.VersionInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_0(
     func: (event: genesis.Version_1_0_0Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_0",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_0" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_1(
     func: (event: genesis.Version_1_0_1Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_1",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_1" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_2(
     func: (event: genesis.Version_1_0_2Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_2",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_2" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_3(
     func: (event: genesis.Version_1_0_3Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_3",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_3" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_4(
     func: (event: genesis.Version_1_0_4Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_4",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_4" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_5(
     func: (event: genesis.Version_1_0_5Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_5",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_5" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_6(
     func: (event: genesis.Version_1_0_6Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_6",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_6" }, fetchConfig);
     return this;
   }
 
   onEventVersion_1_0_7(
     func: (event: genesis.Version_1_0_7Instance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): genesis {
-    this.onMoveEvent(
-      func,
-      {
-        type: "genesis::Version_1_0_7",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "genesis::Version_1_0_7" }, fetchConfig);
     return this;
   }
 }
@@ -613,7 +527,7 @@ export namespace genesis {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::genesis::GovernanceGenesis";
 
     const TYPE = new TypeDescriptor<GovernanceGenesis>(
-      GovernanceGenesis.TYPE_QNAME
+      GovernanceGenesis.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<GovernanceGenesis> {
@@ -630,7 +544,7 @@ export namespace genesis {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::genesis::GovernanceManagerCap";
 
     const TYPE = new TypeDescriptor<GovernanceManagerCap>(
-      GovernanceManagerCap.TYPE_QNAME
+      GovernanceManagerCap.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<GovernanceManagerCap> {
@@ -844,10 +758,10 @@ export class governance_v1 extends SuiBaseProcessor {
   onEntryActivateGovernance(
     func: (
       call: governance_v1.ActivateGovernancePayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v1 {
     this.onEntryFunctionCall(
       func,
@@ -855,7 +769,7 @@ export class governance_v1 extends SuiBaseProcessor {
         ...filter,
         function: "governance_v1::activate_governance",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -863,10 +777,10 @@ export class governance_v1 extends SuiBaseProcessor {
   onEntryAddDescriptionForProposal(
     func: (
       call: governance_v1.AddDescriptionForProposalPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v1 {
     this.onEntryFunctionCall(
       func,
@@ -874,7 +788,7 @@ export class governance_v1 extends SuiBaseProcessor {
         ...filter,
         function: "governance_v1::add_description_for_proposal",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -882,7 +796,7 @@ export class governance_v1 extends SuiBaseProcessor {
   onEntryCancelProposal(
     func: (call: governance_v1.CancelProposalPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v1 {
     this.onEntryFunctionCall(
       func,
@@ -890,38 +804,30 @@ export class governance_v1 extends SuiBaseProcessor {
         ...filter,
         function: "governance_v1::cancel_proposal",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
 
   onEventChangeState(
     func: (event: governance_v1.ChangeStateInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v1 {
-    this.onMoveEvent(
-      func,
-      {
-        type: "governance_v1::ChangeState",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "governance_v1::ChangeState" }, fetchConfig);
     return this;
   }
 
   onEventCreateProposal(
     func: (
       event: governance_v1.CreateProposalInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v1 {
     this.onMoveEvent(
       func,
-      {
-        type: "governance_v1::CreateProposal",
-      },
-      fetchConfig
+      { type: "governance_v1::CreateProposal" },
+      fetchConfig,
     );
     return this;
   }
@@ -977,7 +883,7 @@ export namespace governance_v1 {
     announce_delay: bigint;
     voting_delay: bigint;
     max_delay: bigint;
-    members: SuiAddress[];
+    members: string[];
     his_proposal: _0x2.object_.ID[];
   }
 
@@ -994,14 +900,14 @@ export namespace governance_v1 {
 
   export interface Proposal<T0> {
     id: _0x2.object_.UID;
-    creator: SuiAddress;
+    creator: string;
     start_vote: bigint;
     end_vote: _0x1.option.Option<bigint>;
     expired: bigint;
     package_id: _0x1.ascii.String;
     certificate: T0;
-    favor_votes: SuiAddress[];
-    against_votes: SuiAddress[];
+    favor_votes: string[];
+    against_votes: string[];
     state: number;
   }
 
@@ -1012,45 +918,27 @@ export namespace governance_v1 {
     const TYPE = new TypeDescriptor<Proposal<any>>(Proposal.TYPE_QNAME);
 
     export function type<T0>(
-      arg0: TypeDescriptor<T0> = ANY_TYPE
+      arg0: TypeDescriptor<T0> = ANY_TYPE,
     ): TypeDescriptor<Proposal<T0>> {
       return TYPE.apply(arg0);
     }
   }
 
   export interface ActivateGovernancePayload
-    extends TypedFunctionPayload<
-      [
-        _0x2.package_.UpgradeCap | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
-      ]
-    > {
-    arguments_decoded: [
-      _0x2.package_.UpgradeCap | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
-    ];
+    extends TypedFunctionPayload<[_0x2.package_.UpgradeCap, string, string]> {
+    arguments_decoded: [_0x2.package_.UpgradeCap, string, string];
     type_arguments: [];
   }
 
   export interface AddDescriptionForProposalPayload<T0 = any, T1 = any>
-    extends TypedFunctionPayload<
-      [SuiAddress | undefined, T1 | undefined, SuiAddress | undefined]
-    > {
-    arguments_decoded: [
-      SuiAddress | undefined,
-      T1 | undefined,
-      SuiAddress | undefined
-    ];
+    extends TypedFunctionPayload<[string, T1, string]> {
+    arguments_decoded: [string, T1, string];
     type_arguments: [string, string];
   }
 
   export interface CancelProposalPayload<T0 = any>
-    extends TypedFunctionPayload<
-      [SuiAddress | undefined, SuiAddress | undefined]
-    > {
-    arguments_decoded: [SuiAddress | undefined, SuiAddress | undefined];
+    extends TypedFunctionPayload<[string, string]> {
+    arguments_decoded: [string, string];
     type_arguments: [string];
   }
 }
@@ -1072,7 +960,7 @@ export class governance_v2 extends SuiBaseProcessor {
   onEntryCancelProposal(
     func: (call: governance_v2.CancelProposalPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v2 {
     this.onEntryFunctionCall(
       func,
@@ -1080,7 +968,7 @@ export class governance_v2 extends SuiBaseProcessor {
         ...filter,
         function: "governance_v2::cancel_proposal",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1088,7 +976,7 @@ export class governance_v2 extends SuiBaseProcessor {
   onEntryClaim(
     func: (call: governance_v2.ClaimPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v2 {
     this.onEntryFunctionCall(
       func,
@@ -1096,38 +984,30 @@ export class governance_v2 extends SuiBaseProcessor {
         ...filter,
         function: "governance_v2::claim",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
 
   onEventChangeState(
     func: (event: governance_v2.ChangeStateInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v2 {
-    this.onMoveEvent(
-      func,
-      {
-        type: "governance_v2::ChangeState",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "governance_v2::ChangeState" }, fetchConfig);
     return this;
   }
 
   onEventCreateProposal(
     func: (
       event: governance_v2.CreateProposalInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): governance_v2 {
     this.onMoveEvent(
       func,
-      {
-        type: "governance_v2::CreateProposal",
-      },
-      fetchConfig
+      { type: "governance_v2::CreateProposal" },
+      fetchConfig,
     );
     return this;
   }
@@ -1180,7 +1060,7 @@ export namespace governance_v2 {
     id: _0x2.object_.UID;
     governance_manager_cap: _0x1.option.Option<genesis.GovernanceManagerCap>;
     governance_coin_type: _0x1.option.Option<_0x1.type_name.TypeName>;
-    guardians: SuiAddress[];
+    guardians: string[];
     active: Boolean;
     announce_delay: bigint;
     voting_delay: bigint;
@@ -1203,7 +1083,7 @@ export namespace governance_v2 {
 
   export interface Proposal<T0, T1> {
     id: _0x2.object_.UID;
-    creator: SuiAddress;
+    creator: string;
     start_vote: bigint;
     end_vote: bigint;
     expired: bigint;
@@ -1211,9 +1091,9 @@ export namespace governance_v2 {
     certificate: T0;
     staked_coin: _0x2.balance.Balance<T1>;
     favor_num: bigint;
-    favor_votes: _0x2.table.Table<SuiAddress, bigint>;
+    favor_votes: _0x2.table.Table<string, bigint>;
     against_num: bigint;
-    against_votes: _0x2.table.Table<SuiAddress, bigint>;
+    against_votes: _0x2.table.Table<string, bigint>;
     state: number;
   }
 
@@ -1225,29 +1105,21 @@ export namespace governance_v2 {
 
     export function type<T0, T1>(
       arg0: TypeDescriptor<T0> = ANY_TYPE,
-      arg1: TypeDescriptor<T1> = ANY_TYPE
+      arg1: TypeDescriptor<T1> = ANY_TYPE,
     ): TypeDescriptor<Proposal<T0, T1>> {
       return TYPE.apply(arg0, arg1);
     }
   }
 
   export interface CancelProposalPayload<T0 = any, T1 = any>
-    extends TypedFunctionPayload<
-      [SuiAddress | undefined, SuiAddress | undefined, SuiAddress | undefined]
-    > {
-    arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
-    ];
+    extends TypedFunctionPayload<[string, string, string]> {
+    arguments_decoded: [string, string, string];
     type_arguments: [string, string];
   }
 
   export interface ClaimPayload<T0 = any, T1 = any>
-    extends TypedFunctionPayload<
-      [SuiAddress | undefined, SuiAddress | undefined]
-    > {
-    arguments_decoded: [SuiAddress | undefined, SuiAddress | undefined];
+    extends TypedFunctionPayload<[string, string]> {
+    arguments_decoded: [string, string];
     type_arguments: [string, string];
   }
 }
@@ -1267,7 +1139,7 @@ export namespace lending_core_storage {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_core_storage::BorrowRateFactors";
 
     const TYPE = new TypeDescriptor<BorrowRateFactors>(
-      BorrowRateFactors.TYPE_QNAME
+      BorrowRateFactors.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<BorrowRateFactors> {
@@ -1371,7 +1243,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   };
 
   static bind(
-    options: Partial<SuiBindOptions> = {}
+    options: Partial<SuiBindOptions> = {},
   ): lending_core_wormhole_adapter {
     return new lending_core_wormhole_adapter({
       ...lending_core_wormhole_adapter.DEFAULT_OPTIONS,
@@ -1382,10 +1254,10 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryAsCollateral(
     func: (
       call: lending_core_wormhole_adapter.AsCollateralPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -1393,7 +1265,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "lending_core_wormhole_adapter::as_collateral",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1401,10 +1273,10 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryBorrow(
     func: (
       call: lending_core_wormhole_adapter.BorrowPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -1412,7 +1284,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "lending_core_wormhole_adapter::borrow",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1420,10 +1292,10 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryCancelAsCollateral(
     func: (
       call: lending_core_wormhole_adapter.CancelAsCollateralPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -1431,7 +1303,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "lending_core_wormhole_adapter::cancel_as_collateral",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1439,10 +1311,10 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryLiquidate(
     func: (
       call: lending_core_wormhole_adapter.LiquidatePayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -1450,7 +1322,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "lending_core_wormhole_adapter::liquidate",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1458,10 +1330,10 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryRepay(
     func: (
       call: lending_core_wormhole_adapter.RepayPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -1469,7 +1341,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "lending_core_wormhole_adapter::repay",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1477,10 +1349,10 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEntrySupply(
     func: (
       call: lending_core_wormhole_adapter.SupplyPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -1488,7 +1360,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "lending_core_wormhole_adapter::supply",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1496,10 +1368,10 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryWithdraw(
     func: (
       call: lending_core_wormhole_adapter.WithdrawPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -1507,7 +1379,7 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "lending_core_wormhole_adapter::withdraw",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -1515,16 +1387,14 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEventLendingCoreEvent(
     func: (
       event: lending_core_wormhole_adapter.LendingCoreEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_core_wormhole_adapter::LendingCoreEvent",
-      },
-      fetchConfig
+      { type: "lending_core_wormhole_adapter::LendingCoreEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -1532,16 +1402,14 @@ export class lending_core_wormhole_adapter extends SuiBaseProcessor {
   onEventRelayEvent(
     func: (
       event: lending_core_wormhole_adapter.RelayEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_core_wormhole_adapter {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_core_wormhole_adapter::RelayEvent",
-      },
-      fetchConfig
+      { type: "lending_core_wormhole_adapter::RelayEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -1565,7 +1433,7 @@ export namespace lending_core_wormhole_adapter {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_core_wormhole_adapter::LendingCoreEvent";
 
     const TYPE = new TypeDescriptor<LendingCoreEvent>(
-      LendingCoreEvent.TYPE_QNAME
+      LendingCoreEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<LendingCoreEvent> {
@@ -1606,29 +1474,29 @@ export namespace lending_core_wormhole_adapter {
   export interface AsCollateralPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -1636,31 +1504,31 @@ export namespace lending_core_wormhole_adapter {
   export interface BorrowPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        number[],
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -1668,29 +1536,29 @@ export namespace lending_core_wormhole_adapter {
   export interface CancelAsCollateralPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -1698,29 +1566,29 @@ export namespace lending_core_wormhole_adapter {
   export interface LiquidatePayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -1728,29 +1596,29 @@ export namespace lending_core_wormhole_adapter {
   export interface RepayPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -1758,29 +1626,29 @@ export namespace lending_core_wormhole_adapter {
   export interface SupplyPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -1788,31 +1656,31 @@ export namespace lending_core_wormhole_adapter {
   export interface WithdrawPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        number[],
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -1835,16 +1703,14 @@ export class lending_logic extends SuiBaseProcessor {
   onEventLendingCoreExecuteEvent(
     func: (
       event: lending_logic.LendingCoreExecuteEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_logic {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_logic::LendingCoreExecuteEvent",
-      },
-      fetchConfig
+      { type: "lending_logic::LendingCoreExecuteEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -1852,16 +1718,14 @@ export class lending_logic extends SuiBaseProcessor {
   onEventLendingReserveStatsEvent(
     func: (
       event: lending_logic.LendingReserveStatsEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_logic {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_logic::LendingReserveStatsEvent",
-      },
-      fetchConfig
+      { type: "lending_logic::LendingReserveStatsEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -1869,16 +1733,14 @@ export class lending_logic extends SuiBaseProcessor {
   onEventLendingUserStatsEvent(
     func: (
       event: lending_logic.LendingUserStatsEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_logic {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_logic::LendingUserStatsEvent",
-      },
-      fetchConfig
+      { type: "lending_logic::LendingUserStatsEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -1898,7 +1760,7 @@ export namespace lending_logic {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingCoreExecuteEvent";
 
     const TYPE = new TypeDescriptor<LendingCoreExecuteEvent>(
-      LendingCoreExecuteEvent.TYPE_QNAME
+      LendingCoreExecuteEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<LendingCoreExecuteEvent> {
@@ -1927,7 +1789,7 @@ export namespace lending_logic {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent";
 
     const TYPE = new TypeDescriptor<LendingReserveStatsEvent>(
-      LendingReserveStatsEvent.TYPE_QNAME
+      LendingReserveStatsEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<LendingReserveStatsEvent> {
@@ -1954,7 +1816,7 @@ export namespace lending_logic {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent";
 
     const TYPE = new TypeDescriptor<LendingUserStatsEvent>(
-      LendingUserStatsEvent.TYPE_QNAME
+      LendingUserStatsEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<LendingUserStatsEvent> {
@@ -1989,7 +1851,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryAsCollateral(
     func: (call: lending_portal.AsCollateralPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -1997,7 +1859,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::as_collateral",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2005,7 +1867,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryBorrowLocal(
     func: (call: lending_portal.BorrowLocalPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2013,7 +1875,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::borrow_local",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2021,7 +1883,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryBorrowRemote(
     func: (call: lending_portal.BorrowRemotePayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2029,7 +1891,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::borrow_remote",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2037,10 +1899,10 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryCancelAsCollateral(
     func: (
       call: lending_portal.CancelAsCollateralPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2048,7 +1910,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::cancel_as_collateral",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2056,10 +1918,10 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryCancelAsCollateralRemote(
     func: (
       call: lending_portal.CancelAsCollateralRemotePayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2067,7 +1929,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::cancel_as_collateral_remote",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2075,7 +1937,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryLiquidate(
     func: (call: lending_portal.LiquidatePayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2083,7 +1945,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::liquidate",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2091,7 +1953,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryRepay(
     func: (call: lending_portal.RepayPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2099,7 +1961,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::repay",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2107,7 +1969,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntrySupply(
     func: (call: lending_portal.SupplyPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2115,7 +1977,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::supply",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2123,7 +1985,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryWithdrawLocal(
     func: (call: lending_portal.WithdrawLocalPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2131,7 +1993,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::withdraw_local",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2139,7 +2001,7 @@ export class lending_portal extends SuiBaseProcessor {
   onEntryWithdrawRemote(
     func: (call: lending_portal.WithdrawRemotePayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onEntryFunctionCall(
       func,
@@ -2147,7 +2009,7 @@ export class lending_portal extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal::withdraw_remote",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2155,16 +2017,14 @@ export class lending_portal extends SuiBaseProcessor {
   onEventLendingLocalEvent(
     func: (
       event: lending_portal.LendingLocalEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_portal::LendingLocalEvent",
-      },
-      fetchConfig
+      { type: "lending_portal::LendingLocalEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -2172,31 +2032,23 @@ export class lending_portal extends SuiBaseProcessor {
   onEventLendingPortalEvent(
     func: (
       event: lending_portal.LendingPortalEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_portal::LendingPortalEvent",
-      },
-      fetchConfig
+      { type: "lending_portal::LendingPortalEvent" },
+      fetchConfig,
     );
     return this;
   }
 
   onEventRelayEvent(
     func: (event: lending_portal.RelayEventInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal {
-    this.onMoveEvent(
-      func,
-      {
-        type: "lending_portal::RelayEvent",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "lending_portal::RelayEvent" }, fetchConfig);
     return this;
   }
 }
@@ -2204,7 +2056,7 @@ export class lending_portal extends SuiBaseProcessor {
 export namespace lending_portal {
   export interface LendingLocalEvent {
     nonce: bigint;
-    sender: SuiAddress;
+    sender: string;
     dola_pool_address: number[];
     amount: bigint;
     call_type: number;
@@ -2215,7 +2067,7 @@ export namespace lending_portal {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_portal::LendingLocalEvent";
 
     const TYPE = new TypeDescriptor<LendingLocalEvent>(
-      LendingLocalEvent.TYPE_QNAME
+      LendingLocalEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<LendingLocalEvent> {
@@ -2231,7 +2083,7 @@ export namespace lending_portal {
 
   export interface LendingPortal {
     id: _0x2.object_.UID;
-    relayer: SuiAddress;
+    relayer: string;
     next_nonce: bigint;
   }
 
@@ -2248,7 +2100,7 @@ export namespace lending_portal {
 
   export interface LendingPortalEvent {
     nonce: bigint;
-    sender: SuiAddress;
+    sender: string;
     dola_pool_address: number[];
     source_chain_id: number;
     dst_chain_id: number;
@@ -2262,7 +2114,7 @@ export namespace lending_portal {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_portal::LendingPortalEvent";
 
     const TYPE = new TypeDescriptor<LendingPortalEvent>(
-      LendingPortalEvent.TYPE_QNAME
+      LendingPortalEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<LendingPortalEvent> {
@@ -2302,26 +2154,17 @@ export namespace lending_portal {
 
   export interface AsCollateralPayload
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, string, string, string, string, number[], string]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
     ];
     type_arguments: [];
   }
@@ -2329,29 +2172,29 @@ export namespace lending_portal {
   export interface BorrowLocalPayload<T0 = any>
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      bigint,
+      string,
     ];
     type_arguments: [string];
   }
@@ -2359,67 +2202,58 @@ export namespace lending_portal {
   export interface BorrowRemotePayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        number[] | undefined,
-        number | undefined,
-        bigint | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI>[] | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        number[],
+        number,
+        bigint,
+        _0x2.coin.Coin<_0x2.sui.SUI>[],
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      number[] | undefined,
-      number | undefined,
-      bigint | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI>[] | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      number[],
+      number,
+      bigint,
+      _0x2.coin.Coin<_0x2.sui.SUI>[],
+      bigint,
+      string,
     ];
     type_arguments: [];
   }
 
   export interface CancelAsCollateralPayload
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, string, string, string, string, number[], string]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
     ];
     type_arguments: [];
   }
@@ -2427,27 +2261,27 @@ export namespace lending_portal {
   export interface CancelAsCollateralRemotePayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI>[] | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        _0x2.coin.Coin<_0x2.sui.SUI>[],
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI>[] | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      _0x2.coin.Coin<_0x2.sui.SUI>[],
+      bigint,
+      string,
     ];
     type_arguments: [];
   }
@@ -2455,37 +2289,37 @@ export namespace lending_portal {
   export interface LiquidatePayload<T0 = any>
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<T0>[] | undefined,
-        bigint | undefined,
-        number | undefined,
-        number[] | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        _0x2.coin.Coin<T0>[],
+        bigint,
+        number,
+        number[],
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<T0>[] | undefined,
-      bigint | undefined,
-      number | undefined,
-      number[] | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      _0x2.coin.Coin<T0>[],
+      bigint,
+      number,
+      number[],
+      bigint,
+      string,
     ];
     type_arguments: [string];
   }
@@ -2493,31 +2327,31 @@ export namespace lending_portal {
   export interface RepayPayload<T0 = any>
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<T0>[] | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        _0x2.coin.Coin<T0>[],
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<T0>[] | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      _0x2.coin.Coin<T0>[],
+      bigint,
+      string,
     ];
     type_arguments: [string];
   }
@@ -2525,31 +2359,31 @@ export namespace lending_portal {
   export interface SupplyPayload<T0 = any>
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<T0>[] | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        _0x2.coin.Coin<T0>[],
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<T0>[] | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      _0x2.coin.Coin<T0>[],
+      bigint,
+      string,
     ];
     type_arguments: [string];
   }
@@ -2557,29 +2391,29 @@ export namespace lending_portal {
   export interface WithdrawLocalPayload<T0 = any>
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      bigint,
+      string,
     ];
     type_arguments: [string];
   }
@@ -2587,41 +2421,41 @@ export namespace lending_portal {
   export interface WithdrawRemotePayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        number[] | undefined,
-        number | undefined,
-        bigint | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI>[] | undefined,
-        bigint | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        string,
+        number[],
+        number[],
+        number,
+        bigint,
+        _0x2.coin.Coin<_0x2.sui.SUI>[],
+        bigint,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      number[] | undefined,
-      number | undefined,
-      bigint | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI>[] | undefined,
-      bigint | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      number[],
+      number,
+      bigint,
+      _0x2.coin.Coin<_0x2.sui.SUI>[],
+      bigint,
+      string,
     ];
     type_arguments: [];
   }
@@ -2647,10 +2481,10 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntryAsCollateral(
     func: (
       call: lending_portal_v2.AsCollateralPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2658,7 +2492,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::as_collateral",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2666,7 +2500,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntryBorrow(
     func: (call: lending_portal_v2.BorrowPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2674,7 +2508,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::borrow",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2682,10 +2516,10 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntryCancelAsCollateral(
     func: (
       call: lending_portal_v2.CancelAsCollateralPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2693,7 +2527,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::cancel_as_collateral",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2701,7 +2535,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntryClaim(
     func: (call: lending_portal_v2.ClaimPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2709,7 +2543,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::claim",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2717,7 +2551,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntryLiquidate(
     func: (call: lending_portal_v2.LiquidatePayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2725,7 +2559,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::liquidate",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2733,7 +2567,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntryRepay(
     func: (call: lending_portal_v2.RepayPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2741,7 +2575,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::repay",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2749,7 +2583,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntrySupply(
     func: (call: lending_portal_v2.SupplyPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2757,7 +2591,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::supply",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2765,7 +2599,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEntryWithdraw(
     func: (call: lending_portal_v2.WithdrawPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -2773,7 +2607,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "lending_portal_v2::withdraw",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -2781,16 +2615,14 @@ export class lending_portal_v2 extends SuiBaseProcessor {
   onEventLendingPortalEvent(
     func: (
       event: lending_portal_v2.LendingPortalEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): lending_portal_v2 {
     this.onMoveEvent(
       func,
-      {
-        type: "lending_portal_v2::LendingPortalEvent",
-      },
-      fetchConfig
+      { type: "lending_portal_v2::LendingPortalEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -2799,7 +2631,7 @@ export class lending_portal_v2 extends SuiBaseProcessor {
 export namespace lending_portal_v2 {
   export interface LendingPortalEvent {
     nonce: bigint;
-    sender: SuiAddress;
+    sender: string;
     dola_pool_address: number[];
     source_chain_id: number;
     dst_chain_id: number;
@@ -2813,7 +2645,7 @@ export namespace lending_portal_v2 {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_portal_v2::LendingPortalEvent";
 
     const TYPE = new TypeDescriptor<LendingPortalEvent>(
-      LendingPortalEvent.TYPE_QNAME
+      LendingPortalEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<LendingPortalEvent> {
@@ -2830,23 +2662,23 @@ export namespace lending_portal_v2 {
   export interface AsCollateralPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        number[],
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      number[],
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -2854,29 +2686,29 @@ export namespace lending_portal_v2 {
   export interface BorrowPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        number[] | undefined,
-        bigint | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        number,
+        number[],
+        number[],
+        bigint,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      number[] | undefined,
-      bigint | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      number,
+      number[],
+      number[],
+      bigint,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -2884,75 +2716,59 @@ export namespace lending_portal_v2 {
   export interface CancelAsCollateralPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        number[],
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      number[],
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [];
   }
 
   export interface ClaimPayload<T0 = any>
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, number, number, string, string, string]
     > {
-    arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
-    ];
+    arguments_decoded: [string, string, number, number, string, string, string];
     type_arguments: [string];
   }
 
   export interface LiquidatePayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        bigint | undefined,
-        number | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        number,
+        bigint,
+        number,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      bigint | undefined,
-      number | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      number,
+      bigint,
+      number,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -2960,27 +2776,27 @@ export namespace lending_portal_v2 {
   export interface RepayPayload<T0 = any>
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<T0>[] | undefined,
-        bigint | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        _0x2.coin.Coin<T0>[],
+        bigint,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<T0>[] | undefined,
-      bigint | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      _0x2.coin.Coin<T0>[],
+      bigint,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [string];
   }
@@ -2988,27 +2804,27 @@ export namespace lending_portal_v2 {
   export interface SupplyPayload<T0 = any>
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<T0>[] | undefined,
-        bigint | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        _0x2.coin.Coin<T0>[],
+        bigint,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<T0>[] | undefined,
-      bigint | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      _0x2.coin.Coin<T0>[],
+      bigint,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [string];
   }
@@ -3016,29 +2832,29 @@ export namespace lending_portal_v2 {
   export interface WithdrawPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        number[] | undefined,
-        bigint | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        number,
+        number[],
+        number[],
+        bigint,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      number[] | undefined,
-      bigint | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      number,
+      number[],
+      number[],
+      bigint,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -3063,7 +2879,7 @@ export class oracle extends SuiBaseProcessor {
   onEntryFeedTokenPriceByPythV2(
     func: (call: oracle.FeedTokenPriceByPythV2Payload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): oracle {
     this.onEntryFunctionCall(
       func,
@@ -3071,57 +2887,39 @@ export class oracle extends SuiBaseProcessor {
         ...filter,
         function: "oracle::feed_token_price_by_pyth_v2",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
 
   onEventAddRelayer(
     func: (event: oracle.AddRelayerInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): oracle {
-    this.onMoveEvent(
-      func,
-      {
-        type: "oracle::AddRelayer",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "oracle::AddRelayer" }, fetchConfig);
     return this;
   }
 
   onEventRelayer(
     func: (event: oracle.RelayerInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): oracle {
-    this.onMoveEvent(
-      func,
-      {
-        type: "oracle::Relayer",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "oracle::Relayer" }, fetchConfig);
     return this;
   }
 
   onEventRemoveRelayer(
     func: (event: oracle.RemoveRelayerInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): oracle {
-    this.onMoveEvent(
-      func,
-      {
-        type: "oracle::RemoveRelayer",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "oracle::RemoveRelayer" }, fetchConfig);
     return this;
   }
 }
 
 export namespace oracle {
   export interface AddRelayer {
-    new_relayer: SuiAddress;
+    new_relayer: string;
   }
 
   export namespace AddRelayer {
@@ -3200,7 +2998,7 @@ export namespace oracle {
   }
 
   export interface RemoveRelayer {
-    removed_relayer: SuiAddress;
+    removed_relayer: string;
   }
 
   export namespace RemoveRelayer {
@@ -3223,29 +3021,29 @@ export namespace oracle {
   export interface FeedTokenPriceByPythV2Payload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        string,
+        string,
+        number,
+        number[],
+        string,
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      number,
+      number[],
+      string,
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
     ];
     type_arguments: [];
   }
@@ -3269,31 +3067,23 @@ export class pool_manager extends SuiBaseProcessor {
 
   onEventAddLiquidity(
     func: (event: pool_manager.AddLiquidityInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): pool_manager {
-    this.onMoveEvent(
-      func,
-      {
-        type: "pool_manager::AddLiquidity",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "pool_manager::AddLiquidity" }, fetchConfig);
     return this;
   }
 
   onEventRemoveLiquidity(
     func: (
       event: pool_manager.RemoveLiquidityInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): pool_manager {
     this.onMoveEvent(
       func,
-      {
-        type: "pool_manager::RemoveLiquidity",
-      },
-      fetchConfig
+      { type: "pool_manager::RemoveLiquidity" },
+      fetchConfig,
     );
     return this;
   }
@@ -3421,7 +3211,7 @@ export namespace pool_manager {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::pool_manager::PoolManagerInfo";
 
     const TYPE = new TypeDescriptor<PoolManagerInfo>(
-      PoolManagerInfo.TYPE_QNAME
+      PoolManagerInfo.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<PoolManagerInfo> {
@@ -3440,7 +3230,7 @@ export namespace pool_manager {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::pool_manager::RemoveLiquidity";
 
     const TYPE = new TypeDescriptor<RemoveLiquidity>(
-      RemoveLiquidity.TYPE_QNAME
+      RemoveLiquidity.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<RemoveLiquidity> {
@@ -3496,7 +3286,7 @@ export class system_core_wormhole_adapter extends SuiBaseProcessor {
   };
 
   static bind(
-    options: Partial<SuiBindOptions> = {}
+    options: Partial<SuiBindOptions> = {},
   ): system_core_wormhole_adapter {
     return new system_core_wormhole_adapter({
       ...system_core_wormhole_adapter.DEFAULT_OPTIONS,
@@ -3507,10 +3297,10 @@ export class system_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryBindUserAddress(
     func: (
       call: system_core_wormhole_adapter.BindUserAddressPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -3518,7 +3308,7 @@ export class system_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "system_core_wormhole_adapter::bind_user_address",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -3526,10 +3316,10 @@ export class system_core_wormhole_adapter extends SuiBaseProcessor {
   onEntryUnbindUserAddress(
     func: (
       call: system_core_wormhole_adapter.UnbindUserAddressPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_core_wormhole_adapter {
     this.onEntryFunctionCall(
       func,
@@ -3537,7 +3327,7 @@ export class system_core_wormhole_adapter extends SuiBaseProcessor {
         ...filter,
         function: "system_core_wormhole_adapter::unbind_user_address",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -3545,16 +3335,14 @@ export class system_core_wormhole_adapter extends SuiBaseProcessor {
   onEventSystemCoreEvent(
     func: (
       event: system_core_wormhole_adapter.SystemCoreEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_core_wormhole_adapter {
     this.onMoveEvent(
       func,
-      {
-        type: "system_core_wormhole_adapter::SystemCoreEvent",
-      },
-      fetchConfig
+      { type: "system_core_wormhole_adapter::SystemCoreEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -3575,7 +3363,7 @@ export namespace system_core_wormhole_adapter {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::system_core_wormhole_adapter::SystemCoreEvent";
 
     const TYPE = new TypeDescriptor<SystemCoreEvent>(
-      SystemCoreEvent.TYPE_QNAME
+      SystemCoreEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<SystemCoreEvent> {
@@ -3591,52 +3379,34 @@ export namespace system_core_wormhole_adapter {
 
   export interface BindUserAddressPayload
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, string, string, string, number[], string, string]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
 
   export interface UnbindUserAddressPayload
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, string, string, string, number[], string, string]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -3659,7 +3429,7 @@ export class system_portal extends SuiBaseProcessor {
   onEntryBinding(
     func: (call: system_portal.BindingPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_portal {
     this.onEntryFunctionCall(
       func,
@@ -3667,7 +3437,7 @@ export class system_portal extends SuiBaseProcessor {
         ...filter,
         function: "system_portal::binding",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -3675,7 +3445,7 @@ export class system_portal extends SuiBaseProcessor {
   onEntryUnbinding(
     func: (call: system_portal.UnbindingPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_portal {
     this.onEntryFunctionCall(
       func,
@@ -3683,7 +3453,7 @@ export class system_portal extends SuiBaseProcessor {
         ...filter,
         function: "system_portal::unbinding",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -3691,16 +3461,14 @@ export class system_portal extends SuiBaseProcessor {
   onEventSystemLocalEvent(
     func: (
       event: system_portal.SystemLocalEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_portal {
     this.onMoveEvent(
       func,
-      {
-        type: "system_portal::SystemLocalEvent",
-      },
-      fetchConfig
+      { type: "system_portal::SystemLocalEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -3709,7 +3477,7 @@ export class system_portal extends SuiBaseProcessor {
 export namespace system_portal {
   export interface SystemLocalEvent {
     nonce: bigint;
-    sender: SuiAddress;
+    sender: string;
     user_chain_id: number;
     user_address: number[];
     call_type: number;
@@ -3720,7 +3488,7 @@ export namespace system_portal {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::system_portal::SystemLocalEvent";
 
     const TYPE = new TypeDescriptor<SystemLocalEvent>(
-      SystemLocalEvent.TYPE_QNAME
+      SystemLocalEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<SystemLocalEvent> {
@@ -3752,45 +3520,17 @@ export namespace system_portal {
 
   export interface BindingPayload
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, string, number, number[], string]
     > {
-    arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      SuiAddress | undefined
-    ];
+    arguments_decoded: [string, string, string, number, number[], string];
     type_arguments: [];
   }
 
   export interface UnbindingPayload
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, string, number, number[], string]
     > {
-    arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      SuiAddress | undefined
-    ];
+    arguments_decoded: [string, string, string, number, number[], string];
     type_arguments: [];
   }
 }
@@ -3815,7 +3555,7 @@ export class system_portal_v2 extends SuiBaseProcessor {
   onEntryBinding(
     func: (call: system_portal_v2.BindingPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -3823,7 +3563,7 @@ export class system_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "system_portal_v2::binding",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -3831,7 +3571,7 @@ export class system_portal_v2 extends SuiBaseProcessor {
   onEntryUnbinding(
     func: (call: system_portal_v2.UnbindingPayload, ctx: SuiContext) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_portal_v2 {
     this.onEntryFunctionCall(
       func,
@@ -3839,7 +3579,7 @@ export class system_portal_v2 extends SuiBaseProcessor {
         ...filter,
         function: "system_portal_v2::unbinding",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -3847,16 +3587,14 @@ export class system_portal_v2 extends SuiBaseProcessor {
   onEventSystemPortalEvent(
     func: (
       event: system_portal_v2.SystemPortalEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): system_portal_v2 {
     this.onMoveEvent(
       func,
-      {
-        type: "system_portal_v2::SystemPortalEvent",
-      },
-      fetchConfig
+      { type: "system_portal_v2::SystemPortalEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -3865,7 +3603,7 @@ export class system_portal_v2 extends SuiBaseProcessor {
 export namespace system_portal_v2 {
   export interface SystemPortalEvent {
     nonce: bigint;
-    sender: SuiAddress;
+    sender: string;
     user_chain_id: number;
     user_address: number[];
     call_type: number;
@@ -3876,7 +3614,7 @@ export namespace system_portal_v2 {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::system_portal_v2::SystemPortalEvent";
 
     const TYPE = new TypeDescriptor<SystemPortalEvent>(
-      SystemPortalEvent.TYPE_QNAME
+      SystemPortalEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<SystemPortalEvent> {
@@ -3893,25 +3631,25 @@ export namespace system_portal_v2 {
   export interface BindingPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        number,
+        number[],
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      number,
+      number[],
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -3919,25 +3657,25 @@ export namespace system_portal_v2 {
   export interface UnbindingPayload
     extends TypedFunctionPayload<
       [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
+        string,
+        string,
+        string,
+        number,
+        number[],
+        _0x2.coin.Coin<_0x2.sui.SUI>,
+        string,
+        string,
       ]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      _0x2.coin.Coin<_0x2.sui.SUI> | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      number,
+      number[],
+      _0x2.coin.Coin<_0x2.sui.SUI>,
+      string,
+      string,
     ];
     type_arguments: [];
   }
@@ -3959,29 +3697,17 @@ export class user_manager extends SuiBaseProcessor {
 
   onEventBindUser(
     func: (event: user_manager.BindUserInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): user_manager {
-    this.onMoveEvent(
-      func,
-      {
-        type: "user_manager::BindUser",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "user_manager::BindUser" }, fetchConfig);
     return this;
   }
 
   onEventUnbindUser(
     func: (event: user_manager.UnbindUserInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): user_manager {
-    this.onMoveEvent(
-      func,
-      {
-        type: "user_manager::UnbindUser",
-      },
-      fetchConfig
-    );
+    this.onMoveEvent(func, { type: "user_manager::UnbindUser" }, fetchConfig);
     return this;
   }
 }
@@ -4039,7 +3765,7 @@ export namespace user_manager {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::user_manager::UserAddressCatalog";
 
     const TYPE = new TypeDescriptor<UserAddressCatalog>(
-      UserAddressCatalog.TYPE_QNAME
+      UserAddressCatalog.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<UserAddressCatalog> {
@@ -4058,7 +3784,7 @@ export namespace user_manager {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::user_manager::UserManagerInfo";
 
     const TYPE = new TypeDescriptor<UserManagerInfo>(
-      UserManagerInfo.TYPE_QNAME
+      UserManagerInfo.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<UserManagerInfo> {
@@ -4087,16 +3813,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventAddRelayer(
     func: (
       event: wormhole_adapter_core.AddRelayerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::AddRelayer",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::AddRelayer" },
+      fetchConfig,
     );
     return this;
   }
@@ -4104,16 +3828,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventDeleteBridge(
     func: (
       event: wormhole_adapter_core.DeleteBridgeInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::DeleteBridge",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::DeleteBridge" },
+      fetchConfig,
     );
     return this;
   }
@@ -4121,16 +3843,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventDeleteOwner(
     func: (
       event: wormhole_adapter_core.DeleteOwnerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::DeleteOwner",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::DeleteOwner" },
+      fetchConfig,
     );
     return this;
   }
@@ -4138,16 +3858,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventDeleteSpender(
     func: (
       event: wormhole_adapter_core.DeleteSpenderInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::DeleteSpender",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::DeleteSpender" },
+      fetchConfig,
     );
     return this;
   }
@@ -4155,16 +3873,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventRegisterBridge(
     func: (
       event: wormhole_adapter_core.RegisterBridgeInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::RegisterBridge",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::RegisterBridge" },
+      fetchConfig,
     );
     return this;
   }
@@ -4172,16 +3888,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventRegisterOwner(
     func: (
       event: wormhole_adapter_core.RegisterOwnerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::RegisterOwner",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::RegisterOwner" },
+      fetchConfig,
     );
     return this;
   }
@@ -4189,16 +3903,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventRegisterSpender(
     func: (
       event: wormhole_adapter_core.RegisterSpenderInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::RegisterSpender",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::RegisterSpender" },
+      fetchConfig,
     );
     return this;
   }
@@ -4206,16 +3918,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventRelayer(
     func: (
       event: wormhole_adapter_core.RelayerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::Relayer",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::Relayer" },
+      fetchConfig,
     );
     return this;
   }
@@ -4223,16 +3933,14 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
   onEventRemoveRelayer(
     func: (
       event: wormhole_adapter_core.RemoveRelayerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_core {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_core::RemoveRelayer",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_core::RemoveRelayer" },
+      fetchConfig,
     );
     return this;
   }
@@ -4240,7 +3948,7 @@ export class wormhole_adapter_core extends SuiBaseProcessor {
 
 export namespace wormhole_adapter_core {
   export interface AddRelayer {
-    new_relayer: SuiAddress;
+    new_relayer: string;
   }
 
   export namespace AddRelayer {
@@ -4402,7 +4110,7 @@ export namespace wormhole_adapter_core {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::wormhole_adapter_core::RegisterSpender";
 
     const TYPE = new TypeDescriptor<RegisterSpender>(
-      RegisterSpender.TYPE_QNAME
+      RegisterSpender.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<RegisterSpender> {
@@ -4437,7 +4145,7 @@ export namespace wormhole_adapter_core {
   }
 
   export interface RemoveRelayer {
-    removed_relayer: SuiAddress;
+    removed_relayer: string;
   }
 
   export namespace RemoveRelayer {
@@ -4478,10 +4186,10 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
   onEntryInitialize(
     func: (
       call: wormhole_adapter_pool.InitializePayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onEntryFunctionCall(
       func,
@@ -4489,7 +4197,7 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
         ...filter,
         function: "wormhole_adapter_pool::initialize",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -4497,10 +4205,10 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
   onEntryReceiveWithdraw(
     func: (
       call: wormhole_adapter_pool.ReceiveWithdrawPayload,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onEntryFunctionCall(
       func,
@@ -4508,7 +4216,7 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
         ...filter,
         function: "wormhole_adapter_pool::receive_withdraw",
       },
-      fetchConfig
+      fetchConfig,
     );
     return this;
   }
@@ -4516,30 +4224,26 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
   onEventAddRelayer(
     func: (
       event: wormhole_adapter_pool.AddRelayerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_pool::AddRelayer",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_pool::AddRelayer" },
+      fetchConfig,
     );
     return this;
   }
 
   onEventNonce(
     func: (event: wormhole_adapter_pool.NonceInstance, ctx: SuiContext) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_pool::Nonce",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_pool::Nonce" },
+      fetchConfig,
     );
     return this;
   }
@@ -4547,16 +4251,14 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
   onEventPoolWithdrawEvent(
     func: (
       event: wormhole_adapter_pool.PoolWithdrawEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_pool::PoolWithdrawEvent",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_pool::PoolWithdrawEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -4564,16 +4266,14 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
   onEventRelayEvent(
     func: (
       event: wormhole_adapter_pool.RelayEventInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_pool::RelayEvent",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_pool::RelayEvent" },
+      fetchConfig,
     );
     return this;
   }
@@ -4581,16 +4281,14 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
   onEventRelayer(
     func: (
       event: wormhole_adapter_pool.RelayerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_pool::Relayer",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_pool::Relayer" },
+      fetchConfig,
     );
     return this;
   }
@@ -4598,16 +4296,14 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
   onEventRemoveRelayer(
     func: (
       event: wormhole_adapter_pool.RemoveRelayerInstance,
-      ctx: SuiContext
+      ctx: SuiContext,
     ) => void,
-    fetchConfig?: Partial<MoveFetchConfig>
+    fetchConfig?: Partial<MoveFetchConfig>,
   ): wormhole_adapter_pool {
     this.onMoveEvent(
       func,
-      {
-        type: "wormhole_adapter_pool::RemoveRelayer",
-      },
-      fetchConfig
+      { type: "wormhole_adapter_pool::RemoveRelayer" },
+      fetchConfig,
     );
     return this;
   }
@@ -4615,7 +4311,7 @@ export class wormhole_adapter_pool extends SuiBaseProcessor {
 
 export namespace wormhole_adapter_pool {
   export interface AddRelayer {
-    new_relayer: SuiAddress;
+    new_relayer: string;
   }
 
   export namespace AddRelayer {
@@ -4656,7 +4352,7 @@ export namespace wormhole_adapter_pool {
 
   export interface PoolGenesis {
     id: _0x2.object_.UID;
-    creator: SuiAddress;
+    creator: string;
     is_init: Boolean;
   }
 
@@ -4709,7 +4405,7 @@ export namespace wormhole_adapter_pool {
       "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::wormhole_adapter_pool::PoolWithdrawEvent";
 
     const TYPE = new TypeDescriptor<PoolWithdrawEvent>(
-      PoolWithdrawEvent.TYPE_QNAME
+      PoolWithdrawEvent.TYPE_QNAME,
     );
 
     export function type(): TypeDescriptor<PoolWithdrawEvent> {
@@ -4768,7 +4464,7 @@ export namespace wormhole_adapter_pool {
   }
 
   export interface RemoveRelayer {
-    removed_relayer: SuiAddress;
+    removed_relayer: string;
   }
 
   export namespace RemoveRelayer {
@@ -4789,45 +4485,23 @@ export namespace wormhole_adapter_pool {
   }
 
   export interface InitializePayload
-    extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        number | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
-      ]
-    > {
-    arguments_decoded: [
-      SuiAddress | undefined,
-      number | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
-    ];
+    extends TypedFunctionPayload<[string, number, number[], string, string]> {
+    arguments_decoded: [string, number, number[], string, string];
     type_arguments: [];
   }
 
   export interface ReceiveWithdrawPayload<T0 = any>
     extends TypedFunctionPayload<
-      [
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined,
-        number[] | undefined,
-        SuiAddress | undefined,
-        SuiAddress | undefined
-      ]
+      [string, string, string, string, number[], string, string]
     > {
     arguments_decoded: [
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined,
-      number[] | undefined,
-      SuiAddress | undefined,
-      SuiAddress | undefined
+      string,
+      string,
+      string,
+      string,
+      number[],
+      string,
+      string,
     ];
     type_arguments: [string];
   }
@@ -4851,20 +4525,23 @@ export namespace wormhole_adapter_verify {
 }
 
 const MODULES = JSON.parse(
-  '{"app_manager":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"app_manager","friends":[],"structs":{"AppCap":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_id","type":"U16"}]},"TotalAppInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_caps","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]}},"exposedFunctions":{"destroy_app_cap":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}],"return":[]},"get_app_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}],"return":["U16"]},"register_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"TotalAppInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}]}}},"boost":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"boost","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_logic"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal_v2"}],"structs":{"ClaimRewardEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"token","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"dola_pool_id","type":"U16"},{"name":"dola_user_id","type":"U64"},{"name":"reward_action","type":"U8"},{"name":"amount","type":"U64"},{"name":"sender","type":"Address"}]},"RewardPool":{"abilities":{"abilities":["Key"]},"typeParameters":[{"constraints":{"abilities":[]},"isPhantom":true}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"associate_pool","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"balance","type":{"Struct":{"address":"0x2","module":"balance","name":"Balance","typeArguments":[{"TypeParameter":0}]}}}]},"RewardPoolInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"escrow_fund","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"start_time","type":"U256"},{"name":"end_time","type":"U256"},{"name":"reward_index","type":"U256"},{"name":"reward_action","type":"U8"},{"name":"total_reward","type":"U64"},{"name":"dola_pool_id","type":"U16"},{"name":"last_update_time","type":"U256"},{"name":"reward_per_second","type":"U256"},{"name":"user_reward","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"UserRewardInfo","typeArguments":[]}}]}}}]},"RewardPoolInfos":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"info","type":{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}},{"name":"catalog","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}},"U64"]}}}]},"UpdatePoolRewardEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_pool_id","type":"U16"},{"name":"old_timestamp","type":"U256"},{"name":"new_timestamp","type":"U256"},{"name":"old_reward_index","type":"U256"},{"name":"new_reward_index","type":"U256"}]},"UpdateUserRewardEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_pool_id","type":"U16"},{"name":"dola_user_id","type":"U64"},{"name":"old_unclaimed_balance","type":"U256"},{"name":"new_unclaimed_balance","type":"U256"},{"name":"old_reward_index","type":"U256"},{"name":"new_reward_index","type":"U256"}]},"UserRewardInfo":{"abilities":{"abilities":["Drop","Store"]},"typeParameters":[],"fields":[{"name":"last_update_reward_index","type":"U256"},{"name":"unclaimed_balance","type":"U256"},{"name":"claimed_balance","type":"U256"}]}},"exposedFunctions":{"boost_pool":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U8",{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"claim":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U8",{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]},"claim_reward":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]},"create_reward_pool":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U256","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}},"U16","U8",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"destory_reward_pool":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]},"get_dola_pool_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U16"]},"get_end_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_escrow_fund":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":[{"Reference":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}]},"get_last_update_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_reward_action":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U8"]},"get_reward_index":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_reward_per_second":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_reward_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfos","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}],"return":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}]},"get_start_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_total_reward":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U64"]},"get_total_scaled_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U8"],"return":["U256"]},"get_user_reward_info":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}},"U64"],"return":["U256","U256","U256"]},"get_user_scaled_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U8"],"return":["U256"]},"is_exist_user_reward":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}},"U64"],"return":["Bool"]},"remove_reward_pool":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},"U16",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]}}},"dola_address":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"dola_address","friends":[],"structs":{"DolaAddress":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_address","type":{"Vector":"U8"}}]}},"exposedFunctions":{"convert_address_to_dola":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["Address"],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"convert_dola_to_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["Address"]},"convert_dola_to_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[{"Vector":"U8"}]},"convert_pool_to_dola":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"create_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16",{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"decode_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"encode_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[{"Vector":"U8"}]},"get_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}],"return":[{"Vector":"U8"}]},"get_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}],"return":["U16"]},"get_native_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U16"]},"update_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"update_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16"],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]}}},"dola_pool":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"dola_pool","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_pool"}],"structs":{"DepositPool":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"sender","type":"Address"},{"name":"amount","type":"U64"}]},"Pool":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[{"constraints":{"abilities":[]},"isPhantom":true}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"balance","type":{"Struct":{"address":"0x2","module":"balance","name":"Balance","typeArguments":[{"TypeParameter":0}]}}},{"name":"decimal","type":"U8"}]},"WithdrawPool":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"receiver","type":"Address"},{"name":"amount","type":"U64"}]}},"exposedFunctions":{"convert_amount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U64","U8","U8"],"return":["U64"]},"create_pool":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"coin","name":"CoinMetadata","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"deposit":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Vector":"U8"}]},"get_coin_decimal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}}],"return":["U8"]},"normal_amount":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64"],"return":["U64"]},"send_message":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":["U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Vector":"U8"}]},"unnormal_amount":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64"],"return":["U64"]},"withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"equilibrium_fee":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"equilibrium_fee","friends":[],"structs":{},"exposedFunctions":{"calculate_equilibrium_fee":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256","U256","U256","U256"],"return":["U256"]},"calculate_equilibrium_reward":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256","U256","U256","U256"],"return":["U256"]},"calculate_expected_ratio":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"calculate_liquidity_percent":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256"],"return":["U256"]}}},"genesis":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"genesis","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"governance_v1"}],"structs":{"GovernanceCap":{"abilities":{"abilities":[]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"GovernanceGenesis":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"upgrade_cap","type":{"Struct":{"address":"0x2","module":"package","name":"UpgradeCap","typeArguments":[]}}},{"name":"manager_ids","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"GovernanceManagerCap":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}}]},"Version":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_0":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_1":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_2":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_3":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_4":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_5":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_6":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_7":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]}},"exposedFunctions":{"authorize_upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},"U8",{"Vector":"U8"}],"return":[{"Struct":{"address":"0x2","module":"package","name":"UpgradeTicket","typeArguments":[]}}]},"check_latest_version":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}}],"return":[]},"commit_upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"package","name":"UpgradeReceipt","typeArguments":[]}}],"return":[]},"create":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}]},"destroy":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}],"return":[]},"destroy_manager":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}],"return":[]},"get_version_1_0_1":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_1","typeArguments":[]}}]},"get_version_1_0_2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_2","typeArguments":[]}}]},"get_version_1_0_3":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_3","typeArguments":[]}}]},"get_version_1_0_4":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_4","typeArguments":[]}}]},"get_version_1_0_5":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_5","typeArguments":[]}}]},"get_version_1_0_6":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_6","typeArguments":[]}}]},"get_version_1_0_7":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_7","typeArguments":[]}}]},"init_genesis":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x2","module":"package","name":"UpgradeCap","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]},"migrate_version":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"TypeParameter":1}],"return":[]},"restore":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"TypeParameter":0}],"return":[]},"shutdown":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}}],"return":[]}}},"governance_v1":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"governance_v1","friends":[],"structs":{"ChangeState":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"new_state","type":"U8"}]},"CreateProposal":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}]},"GovernanceInfo":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"governance_manager_cap","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]}}},{"name":"active","type":"Bool"},{"name":"announce_delay","type":"U64"},{"name":"voting_delay","type":"U64"},{"name":"max_delay","type":"U64"},{"name":"members","type":{"Vector":"Address"}},{"name":"his_proposal","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"Proposal":{"abilities":{"abilities":["Key"]},"typeParameters":[{"constraints":{"abilities":["Drop","Store"]},"isPhantom":false}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"creator","type":"Address"},{"name":"start_vote","type":"U64"},{"name":"end_vote","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":["U64"]}}},{"name":"expired","type":"U64"},{"name":"package_id","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"certificate","type":{"TypeParameter":0}},{"name":"favor_votes","type":{"Vector":"Address"}},{"name":"against_votes","type":{"Vector":"Address"}},{"name":"state","type":"U8"}]}},"exposedFunctions":{"activate_governance":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Struct":{"address":"0x2","module":"package","name":"UpgradeCap","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"add_description_for_proposal":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":["Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},{"TypeParameter":1},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"add_member":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"cancel_proposal":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"check_member":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"create_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"create_proposal_with_history":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"destroy_governance_cap":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}],"return":[]},"ensure_two_thirds":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U64","U64"],"return":["Bool"]},"get_his_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}}],"return":[{"Reference":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"get_proposal_state":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}]},"remove_member":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"update_delay":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"U64","U64","U64"],"return":[]},"upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]},"vote_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},"Bool",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}]}}]}}},"governance_v2":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"governance_v2","friends":[],"structs":{"ChangeState":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"new_state","type":"U8"}]},"CreateProposal":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}]},"GovernanceInfo":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"governance_manager_cap","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]}}},{"name":"governance_coin_type","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x1","module":"type_name","name":"TypeName","typeArguments":[]}}]}}},{"name":"guardians","type":{"Vector":"Address"}},{"name":"active","type":"Bool"},{"name":"announce_delay","type":"U64"},{"name":"voting_delay","type":"U64"},{"name":"max_delay","type":"U64"},{"name":"proposal_minimum_staking","type":"U64"},{"name":"voting_minimum_staking","type":"U64"},{"name":"his_proposal","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"Proposal":{"abilities":{"abilities":["Key"]},"typeParameters":[{"constraints":{"abilities":["Drop","Store"]},"isPhantom":false},{"constraints":{"abilities":[]},"isPhantom":true}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"creator","type":"Address"},{"name":"start_vote","type":"U64"},{"name":"end_vote","type":"U64"},{"name":"expired","type":"U64"},{"name":"package_id","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"certificate","type":{"TypeParameter":0}},{"name":"staked_coin","type":{"Struct":{"address":"0x2","module":"balance","name":"Balance","typeArguments":[{"TypeParameter":1}]}}},{"name":"favor_num","type":"U64"},{"name":"favor_votes","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["Address","U64"]}}},{"name":"against_num","type":"U64"},{"name":"against_votes","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["Address","U64"]}}},{"name":"state","type":"U8"}]}},"exposedFunctions":{"activate_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"Struct":{"address":"0x1","module":"type_name","name":"TypeName","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}],"return":[]},"add_guardians":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"cancel_proposal":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"check_guardians":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"claim":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"create_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":1}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"create_proposal_with_history":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":1}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"destroy_governance_cap":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}],"return":[]},"ensure_two_thirds":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U64","U64"],"return":["Bool"]},"get_proposal_state":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}]},"remove_guardians":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"update_delay":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"U64","U64","U64"],"return":[]},"update_minumum_staking":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"U64","U64"],"return":[]},"upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]},"vote_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":1}]}}},"U64","Bool",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}]}}]}}},"lending_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_codec","friends":[],"structs":{},"exposedFunctions":{"decode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"decode_liquidate_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U8"]},"decode_liquidate_payload_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64","U16","U64","U16","U8"]},"decode_manage_collateral_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Vector":"U16"},"U8"]},"decode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"encode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"encode_liquidate_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64"],"return":[{"Vector":"U8"}]},"encode_liquidate_payload_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64","U16","U64","U16"],"return":[{"Vector":"U8"}]},"encode_manage_collateral_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U16"},"U8"],"return":[{"Vector":"U8"}]},"encode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"get_as_colleteral_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_borrow_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_cancel_as_colleteral_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_liquidate_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_repay_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_supply_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_withdraw_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"lending_core_storage":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_storage","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_logic"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"}],"structs":{"BorrowRateFactors":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"base_borrow_rate","type":"U256"},{"name":"borrow_rate_slope1","type":"U256"},{"name":"borrow_rate_slope2","type":"U256"},{"name":"optimal_utilization","type":"U256"}]},"ReserveData":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"is_isolated_asset","type":"Bool"},{"name":"borrowable_in_isolation","type":"Bool"},{"name":"isolate_debt","type":"U256"},{"name":"last_update_timestamp","type":"U256"},{"name":"treasury","type":"U64"},{"name":"treasury_factor","type":"U256"},{"name":"supply_cap_ceiling","type":"U256"},{"name":"borrow_cap_ceiling","type":"U256"},{"name":"current_borrow_rate","type":"U256"},{"name":"current_liquidity_rate","type":"U256"},{"name":"current_borrow_index","type":"U256"},{"name":"current_liquidity_index","type":"U256"},{"name":"collateral_coefficient","type":"U256"},{"name":"borrow_coefficient","type":"U256"},{"name":"borrow_rate_factors","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"BorrowRateFactors","typeArguments":[]}}},{"name":"otoken_scaled","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"ScaledBalance","typeArguments":[]}}},{"name":"dtoken_scaled","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"ScaledBalance","typeArguments":[]}}}]},"ScaledBalance":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"user_state","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64","U256"]}}},{"name":"total_supply","type":"U256"}]},"Storage":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_cap","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"name":"reserves","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"ReserveData","typeArguments":[]}}]}}},{"name":"user_infos","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"UserInfo","typeArguments":[]}}]}}}]},"UserInfo":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"average_liquidity","type":"U256"},{"name":"last_average_update","type":"U256"},{"name":"liquid_assets","type":{"Vector":"U16"}},{"name":"collaterals","type":{"Vector":"U16"}},{"name":"loans","type":{"Vector":"U16"}}]}},"exposedFunctions":{"add_user_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"add_user_liquid_asset":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"add_user_loan":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"burn_dtoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"burn_otoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"can_borrow_in_isolation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"ensure_user_info_exist":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64"],"return":[]},"exist_reserve":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"exist_user_info":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["Bool"]},"get_app_cap":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}]},"get_app_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":["U16"]},"get_borrow_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_borrow_index":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_borrow_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_borrow_rate_factors":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256","U256","U256","U256"]},"get_collateral_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_dtoken_scaled_total_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_dtoken_scaled_total_supply_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_isolate_debt":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_last_update_timestamp":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_liquidity_index":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_liquidity_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_otoken_scaled_total_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_otoken_scaled_total_supply_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_reserve_borrow_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_reserve_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":["U64"]},"get_reserve_supply_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_reserve_treasury":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U64"]},"get_storage_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":[{"MutableReference":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}}]},"get_timestamp":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":["U256"]},"get_treasury_factor":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_user_average_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["U256"]},"get_user_collaterals":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":[{"Vector":"U16"}]},"get_user_last_timestamp":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["U256"]},"get_user_liquid_assets":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":[{"Vector":"U16"}]},"get_user_loans":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":[{"Vector":"U16"}]},"get_user_scaled_dtoken":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"get_user_scaled_dtoken_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"get_user_scaled_otoken":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"get_user_scaled_otoken_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"initialize_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"TotalAppInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"is_isolated_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"mint_dtoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"mint_otoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"register_new_reserve":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U16","Bool","Bool","U64","U256","U256","U256","U256","U256","U256","U256","U256","U256",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"remove_user_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"remove_user_liquid_asset":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"remove_user_loan":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"set_borrow_cap_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_borrow_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_borrow_rate_factors":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256","U256","U256"],"return":[]},"set_borrowable_in_isolation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","Bool"],"return":[]},"set_collateral_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_is_isolated_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","Bool"],"return":[]},"set_supply_cap_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_treasury_factor":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"update_interest_rate":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256"],"return":[]},"update_isolate_debt":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"update_state":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256","U256","U256"],"return":[]},"update_user_average_liquidity":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U256"],"return":[]}}},"lending_core_wormhole_adapter":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter","friends":[],"structs":{"LendingCoreEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender_user_id","type":"U64"},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"dola_pool_id","type":"U16"},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U256"},{"name":"liquidate_user_id","type":"U64"},{"name":"call_type","type":"U8"}]},"RelayEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"sequence","type":"U64"},{"name":"source_chain_id","type":"U16"},{"name":"source_chain_nonce","type":"U64"},{"name":"dst_pool","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"liquidate":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"repay":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"supply":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"lending_logic":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_logic","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"}],"structs":{"LendingCoreExecuteEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"user_id","type":"U64"},{"name":"amount","type":"U256"},{"name":"pool_id","type":"U16"},{"name":"violator_id","type":"U64"},{"name":"call_type","type":"U8"}]},"LendingReserveStatsEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_id","type":"U16"},{"name":"otoken_scaled_amount","type":"U256"},{"name":"dtoken_scaled_amount","type":"U256"},{"name":"supply_rate","type":"U256"},{"name":"borrow_rate","type":"U256"},{"name":"supply_index","type":"U256"},{"name":"borrow_index","type":"U256"}]},"LendingUserStatsEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_id","type":"U16"},{"name":"user_id","type":"U64"},{"name":"otoken_scaled_amount","type":"U256"},{"name":"dtoken_scaled_amount","type":"U256"},{"name":"hf","type":"U256"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16"],"return":[]},"calculate_actual_liquidation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16","U256","U16","U256","U256","U256"],"return":["U256","U256","U256","U256"]},"calculate_amount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16","U256"],"return":["U256"]},"calculate_liquidation_base_discount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"calculate_liquidation_discount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U64"],"return":["U256"]},"calculate_max_liquidation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U64","U16","U16"],"return":["U256","U256"]},"calculate_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16","U256"],"return":["U256"]},"cancel_as_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16"],"return":[]},"check_user_fresh_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64",{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"claim_from_treasury":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"execute_borrow":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":[]},"execute_liquidate":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U64","U16","U16"],"return":[]},"execute_repay":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":[]},"execute_supply":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":[]},"execute_withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":["U256"]},"has_collateral":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["Bool"]},"has_deficit":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["Bool"]},"is_borrowable_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"is_collateral":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["Bool"]},"is_health":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["Bool"]},"is_isolation_mode":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["Bool"]},"is_liquid_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["Bool"]},"is_loan":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["Bool"]},"not_reach_borrow_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U256"],"return":["Bool"]},"not_reach_supply_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":["Bool"]},"total_dtoken_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"total_otoken_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"user_collateral_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_collateral_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_health_collateral_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_health_factor":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_health_loan_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_loan_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_loan_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_total_collateral_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_total_loan_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]}}},"lending_portal":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal","friends":[],"structs":{"LendingLocalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"dola_pool_address","type":{"Vector":"U8"}},{"name":"amount","type":"U64"},{"name":"call_type","type":"U8"}]},"LendingPortal":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"relayer","type":"Address"},{"name":"next_nonce","type":"U64"}]},"LendingPortalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"dola_pool_address","type":{"Vector":"U8"}},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U64"},{"name":"call_type","type":"U8"}]},"RelayEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"sequence","type":"U64"},{"name":"nonce","type":"U64"},{"name":"dst_pool","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"fee_amount","type":"U64"},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U16"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow_local":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow_remote":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U8"},{"Vector":"U8"},"U16","U64",{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U16"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral_remote":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Vector":"U16"},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"liquidate":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64","U16",{"Vector":"U8"},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"repay":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"set_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},"Address"],"return":[]},"supply":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw_local":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw_remote":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U8"},{"Vector":"U8"},"U16","U64",{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"lending_portal_v2":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal_v2","friends":[],"structs":{"LendingPortalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"dola_pool_address","type":{"Vector":"U8"}},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U64"},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Vector":"U16"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Vector":"U8"},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Vector":"U16"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"claim":{"visibility":"Private","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U8",{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"liquidate":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16","U64","U16",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"repay":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"supply":{"visibility":"Private","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Vector":"U8"},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"merge_coins":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"merge_coins","friends":[],"structs":{},"exposedFunctions":{"merge_coin":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]}}},"oracle":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"oracle","friends":[],"structs":{"AddRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"new_relayer","type":"Address"}]},"Price":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"value","type":"U256"},{"name":"decimal","type":"U8"},{"name":"last_update_timestamp","type":"U64"}]},"PriceOracle":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"price_guard_time","type":"U64"},{"name":"price_fresh_time","type":"U64"},{"name":"price_identifiers","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"price_identifier","name":"PriceIdentifier","typeArguments":[]}}]}}},{"name":"price_oracles","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"Price","typeArguments":[]}}]}}}]},"Relayer":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"RemoveRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"removed_relayer","type":"Address"}]}},"exposedFunctions":{"add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"Address"],"return":[]},"check_fresh_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Vector":"U16"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"check_guard_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Vector":"U16"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"feed_token_price_by_pyth":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"price_info","name":"PriceInfoObject","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}],"return":[]},"feed_token_price_by_pyth_v2":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"price_info","name":"PriceInfoObject","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"get_token_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16"],"return":["U256","U8","U64"]},"register_token_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Vector":"U8"},"U16","U256","U8",{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"Address"],"return":[]},"set_price_fresh_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":[]},"set_price_guard_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":[]}}},"pool_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"pool_codec","friends":[],"structs":{},"exposedFunctions":{"decode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U16","U8",{"Vector":"U8"}]},"decode_manage_pool_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U256","U8"]},"decode_send_message_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U8",{"Vector":"U8"}]},"decode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U8"]},"encode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U16",{"Vector":"U8"}],"return":[{"Vector":"U8"}]},"encode_manage_pool_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U256","U8"],"return":[{"Vector":"U8"}]},"encode_send_message_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16",{"Vector":"U8"}],"return":[{"Vector":"U8"}]},"encode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64"],"return":[{"Vector":"U8"}]},"get_delete_owner_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_delete_spender_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_deposit_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_register_owner_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_register_spender_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_send_message_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_withdraw_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"pool_manager":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"pool_manager","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_core"}],"structs":{"AddLiquidity":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"amount","type":"U256"},{"name":"equilibrium_reward","type":"U256"}]},"AppInfo":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"app_liquidity","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"Liquidity","typeArguments":[]}}]}}}]},"Liquidity":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"value","type":"U256"}]},"PoolCatalog":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"pool_to_id","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16"]}}},{"name":"id_to_pools","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]}}}]},"PoolInfo":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"name","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"reserve","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"Liquidity","typeArguments":[]}}},{"name":"alpha_1","type":"U256"},{"name":"total_weight","type":"U256"},{"name":"pools","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolLiquidity","typeArguments":[]}}]}}}]},"PoolLiquidity":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"value","type":"U256"},{"name":"lambda_1","type":"U256"},{"name":"equilibrium_fee","type":"U256"},{"name":"weight","type":"U256"}]},"PoolManagerInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_infos","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"AppInfo","typeArguments":[]}}]}}},{"name":"pool_infos","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolInfo","typeArguments":[]}}]}}},{"name":"pool_catalog","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolCatalog","typeArguments":[]}}}]},"RemoveLiquidity":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"amount","type":"U256"},{"name":"equilibrium_fee","type":"U256"}]}},"exposedFunctions":{"add_liquidity":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U256"],"return":["U256","U256"]},"exist_certain_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["Bool"]},"exist_pool_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":["Bool"]},"find_pool_by_chain":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16","U16"],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]}}]},"get_app_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16","U16"],"return":["U256"]},"get_default_alpha_1":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"get_default_lambda_1":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"get_id_by_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U16"]},"get_pool_equilibrium_fee":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U256"]},"get_pool_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U256"]},"get_pool_name_by_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":[{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}]},"get_pool_total_weight":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":["U256"]},"get_pool_weight":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U256"]},"get_pools_by_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":[{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]},"get_token_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":["U256"]},"register_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16"],"return":[]},"register_pool_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}},"U16",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"remove_liquidity":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U256"],"return":["U256","U256"]},"set_equilibrium_alpha":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16","U256"],"return":[]},"set_equilibrium_lambda":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U256"],"return":[]},"set_pool_weight":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U256"],"return":[]},"zero_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"Liquidity","typeArguments":[]}}]}}},"rates":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"rates","friends":[],"structs":{},"exposedFunctions":{"calculate_average_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256","U256"],"return":["U256"]},"calculate_borrow_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":["U256"]},"calculate_compounded_interest":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256"],"return":["U256"]},"calculate_linear_interest":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256"],"return":["U256"]},"calculate_liquidity_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256"],"return":["U256"]},"calculate_utilization":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":["U256"]}}},"ray_math":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"ray_math","friends":[],"structs":{},"exposedFunctions":{"log2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256"],"return":["U8"]},"max":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"min":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"ray":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"ray_div":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"ray_ln2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"ray_log2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256"],"return":["U256"]},"ray_mul":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]}}},"remote_gov_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"remote_gov_codec","friends":[],"structs":{},"exposedFunctions":{"decode_relayer_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"encode_relayer_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"get_add_relayer_opcode":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_remove_relayer_opcode":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"scaled_balance":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"scaled_balance","friends":[],"structs":{},"exposedFunctions":{"balance_of":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"burn_scaled":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"mint_scaled":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]}}},"serde":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"serde","friends":[],"structs":{},"exposedFunctions":{"ascii_to_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U8"],"return":["U8"]},"deserialize_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["Address"]},"deserialize_u128":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U128"]},"deserialize_u128_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U128"]},"deserialize_u16":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U16"]},"deserialize_u256":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U256"]},"deserialize_u256_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U256"]},"deserialize_u64":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U64"]},"deserialize_u8":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U8"]},"deserialize_vector_with_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":[{"Vector":"U8"}]},"get_vector_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U64"]},"hex_str_to_ascii":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U8"],"return":["U8"]},"serialize_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"Address"],"return":[]},"serialize_type":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Vector":"U8"}}],"return":[]},"serialize_u128":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U128"],"return":[]},"serialize_u128_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U128"],"return":[]},"serialize_u16":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U16"],"return":[]},"serialize_u256":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U256"],"return":[]},"serialize_u256_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U256"],"return":[]},"serialize_u64":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U64"],"return":[]},"serialize_u8":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U8"],"return":[]},"serialize_vector":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},{"Vector":"U8"}],"return":[]},"serialize_vector_with_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},{"Vector":"U8"}],"return":[]},"vector_slice":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Copy"]}],"parameters":[{"Reference":{"Vector":{"TypeParameter":0}}},"U64","U64"],"return":[{"Vector":{"TypeParameter":0}}]},"vector_split":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Copy","Drop"]}],"parameters":[{"Reference":{"Vector":{"TypeParameter":0}}},{"TypeParameter":0}],"return":[{"Vector":{"Vector":{"TypeParameter":0}}}]}}},"system_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_codec","friends":[],"structs":{},"exposedFunctions":{"decode_bind_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"encode_bind_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"get_binding_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_unbinding_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"system_core_storage":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_storage","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter"}],"structs":{"Storage":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_cap","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}]}},"exposedFunctions":{"get_app_cap":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_core_storage","name":"Storage","typeArguments":[]}}}],"return":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}]},"initialize_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"TotalAppInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"system_core_wormhole_adapter":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter","friends":[],"structs":{"SystemCoreEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":{"Vector":"U8"}},{"name":"source_chain_id","type":"U16"},{"name":"user_chain_id","type":"U16"},{"name":"user_address","type":{"Vector":"U8"}},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"bind_user_address":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"unbind_user_address":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"system_portal":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal","friends":[],"structs":{"SystemLocalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"user_chain_id","type":"U16"},{"name":"user_address","type":{"Vector":"U8"}},{"name":"call_type","type":"U8"}]},"SystemPortal":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"next_nonce","type":"U64"}]}},"exposedFunctions":{"binding":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_portal","name":"SystemPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"unbinding":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_portal","name":"SystemPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"system_portal_v2":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal_v2","friends":[],"structs":{"SystemPortalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"user_chain_id","type":"U16"},{"name":"user_address","type":{"Vector":"U8"}},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"binding":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"unbinding":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"user_manager":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"user_manager","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_core"}],"structs":{"BindUser":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_user_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"dola_user_id","type":"U64"}]},"UnbindUser":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_user_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"dola_user_id","type":"U64"}]},"UserAddressCatalog":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"user_address_to_user_id","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64"]}}},{"name":"user_id_to_addresses","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64",{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]}}}]},"UserManagerInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"user_address_catalog","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserAddressCatalog","typeArguments":[]}}},{"name":"chain_id_to_group","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16","U16"]}}}]}},"exposedFunctions":{"bind_user_address":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[]},"get_dola_user_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U64"]},"get_user_addresses":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U64"],"return":[{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]},"is_dola_user":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["Bool"]},"process_group_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"register_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16","U16"],"return":[]},"register_dola_user_id":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[]},"unbind_user_address":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[]},"unregister_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16"],"return":[]}}},"wormhole_adapter_core":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_core","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter"}],"structs":{"AddRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"new_relayer","type":"Address"}]},"CoreState":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"wormhole_emitter","type":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"emitter","name":"EmitterCap","typeArguments":[]}}},{"name":"consumed_vaas","type":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"name":"registered_emitters","type":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}}]},"DeleteBridge":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"wormhole_emitter_chain","type":"U16"},{"name":"wormhole_emitter_address","type":{"Vector":"U8"}}]},"DeleteOwner":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"DeleteSpender":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"RegisterBridge":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"wormhole_emitter_chain","type":"U16"},{"name":"wormhole_emitter_address","type":{"Vector":"U8"}}]},"RegisterOwner":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"RegisterSpender":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"Relayer":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"RemoveRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"removed_relayer","type":"Address"}]}},"exposedFunctions":{"add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"Address"],"return":[]},"delete_remote_bridge":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16"],"return":[]},"initialize_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"receive_deposit":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U256",{"Vector":"U8"}]},"receive_message":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Vector":"U8"}]},"receive_withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Vector":"U8"}]},"register_remote_bridge":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16",{"Vector":"U8"}],"return":[]},"remote_add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_delete_owner":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_delete_spender":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_register_owner":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_register_spender":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"Address"],"return":[]},"send_withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U64","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":["U64"]}}},"wormhole_adapter_pool":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_pool","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal_v2"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal_v2"}],"structs":{"AddRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"new_relayer","type":"Address"}]},"Nonce":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"PoolGenesis":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"creator","type":"Address"},{"name":"is_init","type":"Bool"}]},"PoolState":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"wormhole_emitter","type":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"emitter","name":"EmitterCap","typeArguments":[]}}},{"name":"consumed_vaas","type":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"name":"registered_emitters","type":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}}]},"PoolWithdrawEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"pool_address","type":{"Vector":"U8"}},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U64"}]},"RelayEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"sequence","type":"U64"},{"name":"nonce","type":"U64"},{"name":"fee_amount","type":"U64"},{"name":"app_id","type":"U16"},{"name":"call_type","type":"U8"}]},"Relayer":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"RemoveRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"removed_relayer","type":"Address"}]}},"exposedFunctions":{"add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},"Address"],"return":[]},"emit_relay_event":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":["U64","U64","U64","U16","U8"],"return":[]},"get_nonce":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}}],"return":["U64"]},"get_relay_fee_amount":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},"U64"]},"initialize":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolGenesis","typeArguments":[]}}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"receive_withdraw":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},"Address"],"return":[]},"send_deposit":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":["U64"]},"send_message":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":["U64"]}}},"wormhole_adapter_verify":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_verify","friends":[],"structs":{"Unit":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}}]}},"exposedFunctions":{"assert_known_emitter":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"Reference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}}],"return":[]},"get_registered_emitter":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"Reference":"U16"}],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}]},"parse_and_verify":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}]},"parse_verify_and_replay_protect":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}]},"replay_protect":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"Reference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}}}'
+  '{"app_manager":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"app_manager","friends":[],"structs":{"AppCap":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_id","type":"U16"}]},"TotalAppInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_caps","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]}},"exposedFunctions":{"destroy_app_cap":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}],"return":[]},"get_app_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}],"return":["U16"]},"register_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"TotalAppInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}]}}},"boost":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"boost","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_logic"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal_v2"}],"structs":{"ClaimRewardEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"token","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"dola_pool_id","type":"U16"},{"name":"dola_user_id","type":"U64"},{"name":"reward_action","type":"U8"},{"name":"amount","type":"U64"},{"name":"sender","type":"Address"}]},"RewardPool":{"abilities":{"abilities":["Key"]},"typeParameters":[{"constraints":{"abilities":[]},"isPhantom":true}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"associate_pool","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"balance","type":{"Struct":{"address":"0x2","module":"balance","name":"Balance","typeArguments":[{"TypeParameter":0}]}}}]},"RewardPoolInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"escrow_fund","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"start_time","type":"U256"},{"name":"end_time","type":"U256"},{"name":"reward_index","type":"U256"},{"name":"reward_action","type":"U8"},{"name":"total_reward","type":"U64"},{"name":"dola_pool_id","type":"U16"},{"name":"last_update_time","type":"U256"},{"name":"reward_per_second","type":"U256"},{"name":"user_reward","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"UserRewardInfo","typeArguments":[]}}]}}}]},"RewardPoolInfos":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"info","type":{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}},{"name":"catalog","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}},"U64"]}}}]},"UpdatePoolRewardEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_pool_id","type":"U16"},{"name":"old_timestamp","type":"U256"},{"name":"new_timestamp","type":"U256"},{"name":"old_reward_index","type":"U256"},{"name":"new_reward_index","type":"U256"}]},"UpdateUserRewardEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_pool_id","type":"U16"},{"name":"dola_user_id","type":"U64"},{"name":"old_unclaimed_balance","type":"U256"},{"name":"new_unclaimed_balance","type":"U256"},{"name":"old_reward_index","type":"U256"},{"name":"new_reward_index","type":"U256"}]},"UserRewardInfo":{"abilities":{"abilities":["Drop","Store"]},"typeParameters":[],"fields":[{"name":"last_update_reward_index","type":"U256"},{"name":"unclaimed_balance","type":"U256"},{"name":"claimed_balance","type":"U256"}]}},"exposedFunctions":{"boost_pool":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U8",{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"claim":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U8",{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]},"claim_reward":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]},"create_reward_pool":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U256","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}},"U16","U8",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"destory_reward_pool":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]},"get_dola_pool_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U16"]},"get_end_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_escrow_fund":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":[{"Reference":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}]},"get_last_update_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_reward_action":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U8"]},"get_reward_index":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_reward_per_second":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_reward_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfos","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}],"return":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}]},"get_start_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U256"]},"get_total_reward":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}}],"return":["U64"]},"get_total_scaled_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U8"],"return":["U256"]},"get_user_reward_info":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}},"U64"],"return":["U256","U256","U256"]},"get_user_scaled_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U8"],"return":["U256"]},"is_exist_user_reward":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPoolInfo","typeArguments":[]}}},"U64"],"return":["Bool"]},"remove_reward_pool":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},"U16",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]}}},"dola_address":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"dola_address","friends":[],"structs":{"DolaAddress":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_address","type":{"Vector":"U8"}}]}},"exposedFunctions":{"convert_address_to_dola":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["Address"],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"convert_dola_to_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["Address"]},"convert_dola_to_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[{"Vector":"U8"}]},"convert_pool_to_dola":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"create_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16",{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"decode_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"encode_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[{"Vector":"U8"}]},"get_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}],"return":[{"Vector":"U8"}]},"get_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}],"return":["U16"]},"get_native_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U16"]},"update_dola_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"update_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16"],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]}}},"dola_pool":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"dola_pool","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_pool"}],"structs":{"DepositPool":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"sender","type":"Address"},{"name":"amount","type":"U64"}]},"Pool":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[{"constraints":{"abilities":[]},"isPhantom":true}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"balance","type":{"Struct":{"address":"0x2","module":"balance","name":"Balance","typeArguments":[{"TypeParameter":0}]}}},{"name":"decimal","type":"U8"}]},"WithdrawPool":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"receiver","type":"Address"},{"name":"amount","type":"U64"}]}},"exposedFunctions":{"convert_amount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U64","U8","U8"],"return":["U64"]},"create_pool":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"coin","name":"CoinMetadata","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"deposit":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Vector":"U8"}]},"get_coin_decimal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}}],"return":["U8"]},"normal_amount":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64"],"return":["U64"]},"send_message":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":["U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Vector":"U8"}]},"unnormal_amount":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64"],"return":["U64"]},"withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"equilibrium_fee":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"equilibrium_fee","friends":[],"structs":{},"exposedFunctions":{"calculate_equilibrium_fee":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256","U256","U256","U256"],"return":["U256"]},"calculate_equilibrium_reward":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256","U256","U256","U256"],"return":["U256"]},"calculate_expected_ratio":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"calculate_liquidity_percent":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256"],"return":["U256"]}}},"genesis":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"genesis","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"governance_v1"}],"structs":{"GovernanceCap":{"abilities":{"abilities":[]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"GovernanceGenesis":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"upgrade_cap","type":{"Struct":{"address":"0x2","module":"package","name":"UpgradeCap","typeArguments":[]}}},{"name":"manager_ids","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"GovernanceManagerCap":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}}]},"Version":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_0":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_1":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_2":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_3":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_4":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_5":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_6":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"Version_1_0_7":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]}},"exposedFunctions":{"authorize_upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},"U8",{"Vector":"U8"}],"return":[{"Struct":{"address":"0x2","module":"package","name":"UpgradeTicket","typeArguments":[]}}]},"check_latest_version":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}}],"return":[]},"commit_upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"package","name":"UpgradeReceipt","typeArguments":[]}}],"return":[]},"create":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}]},"destroy":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}],"return":[]},"destroy_manager":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}],"return":[]},"get_version_1_0_1":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_1","typeArguments":[]}}]},"get_version_1_0_2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_2","typeArguments":[]}}]},"get_version_1_0_3":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_3","typeArguments":[]}}]},"get_version_1_0_4":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_4","typeArguments":[]}}]},"get_version_1_0_5":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_5","typeArguments":[]}}]},"get_version_1_0_6":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_6","typeArguments":[]}}]},"get_version_1_0_7":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"Version_1_0_7","typeArguments":[]}}]},"init_genesis":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x2","module":"package","name":"UpgradeCap","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]},"migrate_version":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"TypeParameter":1}],"return":[]},"restore":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"TypeParameter":0}],"return":[]},"shutdown":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}}],"return":[]}}},"governance_v1":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"governance_v1","friends":[],"structs":{"ChangeState":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"new_state","type":"U8"}]},"CreateProposal":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}]},"GovernanceInfo":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"governance_manager_cap","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]}}},{"name":"active","type":"Bool"},{"name":"announce_delay","type":"U64"},{"name":"voting_delay","type":"U64"},{"name":"max_delay","type":"U64"},{"name":"members","type":{"Vector":"Address"}},{"name":"his_proposal","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"Proposal":{"abilities":{"abilities":["Key"]},"typeParameters":[{"constraints":{"abilities":["Drop","Store"]},"isPhantom":false}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"creator","type":"Address"},{"name":"start_vote","type":"U64"},{"name":"end_vote","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":["U64"]}}},{"name":"expired","type":"U64"},{"name":"package_id","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"certificate","type":{"TypeParameter":0}},{"name":"favor_votes","type":{"Vector":"Address"}},{"name":"against_votes","type":{"Vector":"Address"}},{"name":"state","type":"U8"}]}},"exposedFunctions":{"activate_governance":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Struct":{"address":"0x2","module":"package","name":"UpgradeCap","typeArguments":[]}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"add_description_for_proposal":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":["Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},{"TypeParameter":1},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"add_member":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"cancel_proposal":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"check_member":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"create_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"create_proposal_with_history":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"destroy_governance_cap":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}],"return":[]},"ensure_two_thirds":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U64","U64"],"return":["Bool"]},"get_his_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}}],"return":[{"Reference":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"get_proposal_state":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}]},"remove_member":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"update_delay":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},"U64","U64","U64"],"return":[]},"upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]},"vote_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v1","name":"Proposal","typeArguments":[{"TypeParameter":0}]}}},"Bool",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}]}}]}}},"governance_v2":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"governance_v2","friends":[],"structs":{"ChangeState":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}},{"name":"new_state","type":"U8"}]},"CreateProposal":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"proposal_id","type":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}]},"GovernanceInfo":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"governance_manager_cap","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]}}},{"name":"governance_coin_type","type":{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x1","module":"type_name","name":"TypeName","typeArguments":[]}}]}}},{"name":"guardians","type":{"Vector":"Address"}},{"name":"active","type":"Bool"},{"name":"announce_delay","type":"U64"},{"name":"voting_delay","type":"U64"},{"name":"max_delay","type":"U64"},{"name":"proposal_minimum_staking","type":"U64"},{"name":"voting_minimum_staking","type":"U64"},{"name":"his_proposal","type":{"Vector":{"Struct":{"address":"0x2","module":"object","name":"ID","typeArguments":[]}}}}]},"Proposal":{"abilities":{"abilities":["Key"]},"typeParameters":[{"constraints":{"abilities":["Drop","Store"]},"isPhantom":false},{"constraints":{"abilities":[]},"isPhantom":true}],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"creator","type":"Address"},{"name":"start_vote","type":"U64"},{"name":"end_vote","type":"U64"},{"name":"expired","type":"U64"},{"name":"package_id","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"certificate","type":{"TypeParameter":0}},{"name":"staked_coin","type":{"Struct":{"address":"0x2","module":"balance","name":"Balance","typeArguments":[{"TypeParameter":1}]}}},{"name":"favor_num","type":"U64"},{"name":"favor_votes","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["Address","U64"]}}},{"name":"against_num","type":"U64"},{"name":"against_votes","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["Address","U64"]}}},{"name":"state","type":"U8"}]}},"exposedFunctions":{"activate_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"Struct":{"address":"0x1","module":"type_name","name":"TypeName","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}],"return":[]},"add_guardians":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"cancel_proposal":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"check_guardians":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"claim":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"create_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":1}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"create_proposal_with_history":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":1}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"destroy_governance_cap":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}],"return":[]},"ensure_two_thirds":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U64","U64"],"return":["Bool"]},"get_proposal_state":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}]},"remove_guardians":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"Address"],"return":[]},"update_delay":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"U64","U64","U64"],"return":[]},"update_minumum_staking":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},"U64","U64"],"return":[]},"upgrade":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceManagerCap","typeArguments":[]}}]},"vote_proposal":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Drop","Store"]},{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"GovernanceInfo","typeArguments":[]}}},{"TypeParameter":0},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"governance_v2","name":"Proposal","typeArguments":[{"TypeParameter":0},{"TypeParameter":1}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":1}]}}},"U64","Bool",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}]}}]}}},"lending_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_codec","friends":[],"structs":{},"exposedFunctions":{"decode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"decode_liquidate_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U8"]},"decode_liquidate_payload_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64","U16","U64","U16","U8"]},"decode_manage_collateral_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Vector":"U16"},"U8"]},"decode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"encode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"encode_liquidate_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64"],"return":[{"Vector":"U8"}]},"encode_liquidate_payload_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64","U16","U64","U16"],"return":[{"Vector":"U8"}]},"encode_manage_collateral_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U16"},"U8"],"return":[{"Vector":"U8"}]},"encode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"get_as_colleteral_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_borrow_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_cancel_as_colleteral_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_liquidate_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_repay_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_supply_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_withdraw_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"lending_core_storage":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_storage","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_logic"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"}],"structs":{"BorrowRateFactors":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"base_borrow_rate","type":"U256"},{"name":"borrow_rate_slope1","type":"U256"},{"name":"borrow_rate_slope2","type":"U256"},{"name":"optimal_utilization","type":"U256"}]},"ReserveData":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"is_isolated_asset","type":"Bool"},{"name":"borrowable_in_isolation","type":"Bool"},{"name":"isolate_debt","type":"U256"},{"name":"last_update_timestamp","type":"U256"},{"name":"treasury","type":"U64"},{"name":"treasury_factor","type":"U256"},{"name":"supply_cap_ceiling","type":"U256"},{"name":"borrow_cap_ceiling","type":"U256"},{"name":"current_borrow_rate","type":"U256"},{"name":"current_liquidity_rate","type":"U256"},{"name":"current_borrow_index","type":"U256"},{"name":"current_liquidity_index","type":"U256"},{"name":"collateral_coefficient","type":"U256"},{"name":"borrow_coefficient","type":"U256"},{"name":"borrow_rate_factors","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"BorrowRateFactors","typeArguments":[]}}},{"name":"otoken_scaled","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"ScaledBalance","typeArguments":[]}}},{"name":"dtoken_scaled","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"ScaledBalance","typeArguments":[]}}}]},"ScaledBalance":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"user_state","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64","U256"]}}},{"name":"total_supply","type":"U256"}]},"Storage":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_cap","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"name":"reserves","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"ReserveData","typeArguments":[]}}]}}},{"name":"user_infos","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"UserInfo","typeArguments":[]}}]}}}]},"UserInfo":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"average_liquidity","type":"U256"},{"name":"last_average_update","type":"U256"},{"name":"liquid_assets","type":{"Vector":"U16"}},{"name":"collaterals","type":{"Vector":"U16"}},{"name":"loans","type":{"Vector":"U16"}}]}},"exposedFunctions":{"add_user_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"add_user_liquid_asset":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"add_user_loan":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"burn_dtoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"burn_otoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"can_borrow_in_isolation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"ensure_user_info_exist":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64"],"return":[]},"exist_reserve":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"exist_user_info":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["Bool"]},"get_app_cap":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}]},"get_app_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":["U16"]},"get_borrow_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_borrow_index":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_borrow_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_borrow_rate_factors":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256","U256","U256","U256"]},"get_collateral_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_dtoken_scaled_total_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_dtoken_scaled_total_supply_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_isolate_debt":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_last_update_timestamp":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_liquidity_index":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_liquidity_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_otoken_scaled_total_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_otoken_scaled_total_supply_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_reserve_borrow_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_reserve_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":["U64"]},"get_reserve_supply_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_reserve_treasury":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U64"]},"get_storage_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}}],"return":[{"MutableReference":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}}]},"get_timestamp":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":["U256"]},"get_treasury_factor":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"get_user_average_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["U256"]},"get_user_collaterals":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":[{"Vector":"U16"}]},"get_user_last_timestamp":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["U256"]},"get_user_liquid_assets":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":[{"Vector":"U16"}]},"get_user_loans":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":[{"Vector":"U16"}]},"get_user_scaled_dtoken":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"get_user_scaled_dtoken_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"get_user_scaled_otoken":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"get_user_scaled_otoken_v2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"initialize_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"TotalAppInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"is_isolated_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"mint_dtoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"mint_otoken_scaled":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"register_new_reserve":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U16","Bool","Bool","U64","U256","U256","U256","U256","U256","U256","U256","U256","U256",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"remove_user_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"remove_user_liquid_asset":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"remove_user_loan":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":[]},"set_borrow_cap_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_borrow_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_borrow_rate_factors":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256","U256","U256"],"return":[]},"set_borrowable_in_isolation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","Bool"],"return":[]},"set_collateral_coefficient":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_is_isolated_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","Bool"],"return":[]},"set_supply_cap_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"set_treasury_factor":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"update_interest_rate":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256"],"return":[]},"update_isolate_debt":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":[]},"update_state":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256","U256","U256"],"return":[]},"update_user_average_liquidity":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U256"],"return":[]}}},"lending_core_wormhole_adapter":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter","friends":[],"structs":{"LendingCoreEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender_user_id","type":"U64"},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"dola_pool_id","type":"U16"},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U256"},{"name":"liquidate_user_id","type":"U64"},{"name":"call_type","type":"U8"}]},"RelayEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"sequence","type":"U64"},{"name":"source_chain_id","type":"U16"},{"name":"source_chain_nonce","type":"U64"},{"name":"dst_pool","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"liquidate":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"repay":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"supply":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"lending_logic":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_logic","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"}],"structs":{"LendingCoreExecuteEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"user_id","type":"U64"},{"name":"amount","type":"U256"},{"name":"pool_id","type":"U16"},{"name":"violator_id","type":"U64"},{"name":"call_type","type":"U8"}]},"LendingReserveStatsEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_id","type":"U16"},{"name":"otoken_scaled_amount","type":"U256"},{"name":"dtoken_scaled_amount","type":"U256"},{"name":"supply_rate","type":"U256"},{"name":"borrow_rate","type":"U256"},{"name":"supply_index","type":"U256"},{"name":"borrow_index","type":"U256"}]},"LendingUserStatsEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_id","type":"U16"},{"name":"user_id","type":"U64"},{"name":"otoken_scaled_amount","type":"U256"},{"name":"dtoken_scaled_amount","type":"U256"},{"name":"hf","type":"U256"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16"],"return":[]},"calculate_actual_liquidation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16","U256","U16","U256","U256","U256"],"return":["U256","U256","U256","U256"]},"calculate_amount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16","U256"],"return":["U256"]},"calculate_liquidation_base_discount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"calculate_liquidation_discount":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U64"],"return":["U256"]},"calculate_max_liquidation":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U64","U16","U16"],"return":["U256","U256"]},"calculate_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16","U256"],"return":["U256"]},"cancel_as_collateral":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16"],"return":[]},"check_user_fresh_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64",{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"claim_from_treasury":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U16","U64","U256"],"return":[]},"execute_borrow":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":[]},"execute_liquidate":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U64","U16","U16"],"return":[]},"execute_repay":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":[]},"execute_supply":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":[]},"execute_withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},"U64","U16","U256"],"return":["U256"]},"has_collateral":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["Bool"]},"has_deficit":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["Bool"]},"is_borrowable_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["Bool"]},"is_collateral":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["Bool"]},"is_health":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["Bool"]},"is_isolation_mode":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64"],"return":["Bool"]},"is_liquid_asset":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["Bool"]},"is_loan":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["Bool"]},"not_reach_borrow_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U256"],"return":["Bool"]},"not_reach_supply_ceiling":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":["Bool"]},"total_dtoken_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"total_otoken_supply":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16"],"return":["U256"]},"user_collateral_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_collateral_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_health_collateral_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_health_factor":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_health_loan_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_loan_balance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_loan_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64","U16"],"return":["U256"]},"user_total_collateral_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]},"user_total_loan_value":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":["U256"]}}},"lending_portal":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal","friends":[],"structs":{"LendingLocalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"dola_pool_address","type":{"Vector":"U8"}},{"name":"amount","type":"U64"},{"name":"call_type","type":"U8"}]},"LendingPortal":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"relayer","type":"Address"},{"name":"next_nonce","type":"U64"}]},"LendingPortalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"dola_pool_address","type":{"Vector":"U8"}},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U64"},{"name":"call_type","type":"U8"}]},"RelayEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"sequence","type":"U64"},{"name":"nonce","type":"U64"},{"name":"dst_pool","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"fee_amount","type":"U64"},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U16"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow_local":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow_remote":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U8"},{"Vector":"U8"},"U16","U64",{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U16"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral_remote":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Vector":"U16"},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"liquidate":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64","U16",{"Vector":"U8"},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"repay":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"set_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},"Address"],"return":[]},"supply":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw_local":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw_remote":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_portal","name":"LendingPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Vector":"U8"},{"Vector":"U8"},"U16","U64",{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"lending_portal_v2":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal_v2","friends":[],"structs":{"LendingPortalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"dola_pool_address","type":{"Vector":"U8"}},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U64"},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"as_collateral":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Vector":"U16"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"borrow":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Vector":"U8"},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"cancel_as_collateral":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Vector":"U16"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"claim":{"visibility":"Private","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U8",{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"boost","name":"RewardPool","typeArguments":[{"TypeParameter":0}]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"liquidate":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16","U64","U16",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"repay":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"supply":{"visibility":"Private","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"withdraw":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Vector":"U8"},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"merge_coins":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"merge_coins","friends":[],"structs":{},"exposedFunctions":{"merge_coin":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"Vector":{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}},"U64",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}}]}}},"oracle":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"oracle","friends":[],"structs":{"AddRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"new_relayer","type":"Address"}]},"Price":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"value","type":"U256"},{"name":"decimal","type":"U8"},{"name":"last_update_timestamp","type":"U64"}]},"PriceOracle":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"price_guard_time","type":"U64"},{"name":"price_fresh_time","type":"U64"},{"name":"price_identifiers","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"price_identifier","name":"PriceIdentifier","typeArguments":[]}}]}}},{"name":"price_oracles","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"Price","typeArguments":[]}}]}}}]},"Relayer":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"RemoveRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"removed_relayer","type":"Address"}]}},"exposedFunctions":{"add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"Address"],"return":[]},"check_fresh_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Vector":"U16"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"check_guard_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Vector":"U16"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"feed_token_price_by_pyth":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"price_info","name":"PriceInfoObject","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}}],"return":[]},"feed_token_price_by_pyth_v2":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302","module":"price_info","name":"PriceInfoObject","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"get_token_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U16"],"return":["U256","U8","U64"]},"register_token_price":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},{"Vector":"U8"},"U16","U256","U8",{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"Address"],"return":[]},"set_price_fresh_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":[]},"set_price_guard_time":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"oracle","name":"PriceOracle","typeArguments":[]}}},"U64"],"return":[]}}},"pool_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"pool_codec","friends":[],"structs":{},"exposedFunctions":{"decode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U16","U8",{"Vector":"U8"}]},"decode_manage_pool_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U256","U8"]},"decode_send_message_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U8",{"Vector":"U8"}]},"decode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U8"]},"encode_deposit_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64","U16",{"Vector":"U8"}],"return":[{"Vector":"U8"}]},"encode_manage_pool_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U256","U8"],"return":[{"Vector":"U8"}]},"encode_send_message_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16",{"Vector":"U8"}],"return":[{"Vector":"U8"}]},"encode_withdraw_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64"],"return":[{"Vector":"U8"}]},"get_delete_owner_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_delete_spender_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_deposit_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_register_owner_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_register_spender_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_send_message_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_withdraw_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"pool_manager":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"pool_manager","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_core"}],"structs":{"AddLiquidity":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"amount","type":"U256"},{"name":"equilibrium_reward","type":"U256"}]},"AppInfo":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"app_liquidity","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"Liquidity","typeArguments":[]}}]}}}]},"Liquidity":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"value","type":"U256"}]},"PoolCatalog":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"pool_to_id","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16"]}}},{"name":"id_to_pools","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]}}}]},"PoolInfo":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"name","type":{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}},{"name":"reserve","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"Liquidity","typeArguments":[]}}},{"name":"alpha_1","type":"U256"},{"name":"total_weight","type":"U256"},{"name":"pools","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolLiquidity","typeArguments":[]}}]}}}]},"PoolLiquidity":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"value","type":"U256"},{"name":"lambda_1","type":"U256"},{"name":"equilibrium_fee","type":"U256"},{"name":"weight","type":"U256"}]},"PoolManagerInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_infos","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"AppInfo","typeArguments":[]}}]}}},{"name":"pool_infos","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolInfo","typeArguments":[]}}]}}},{"name":"pool_catalog","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolCatalog","typeArguments":[]}}}]},"RemoveLiquidity":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"pool_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"amount","type":"U256"},{"name":"equilibrium_fee","type":"U256"}]}},"exposedFunctions":{"add_liquidity":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U256"],"return":["U256","U256"]},"exist_certain_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["Bool"]},"exist_pool_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":["Bool"]},"find_pool_by_chain":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16","U16"],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]}}]},"get_app_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16","U16"],"return":["U256"]},"get_default_alpha_1":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"get_default_lambda_1":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"get_id_by_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U16"]},"get_pool_equilibrium_fee":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U256"]},"get_pool_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U256"]},"get_pool_name_by_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":[{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}}]},"get_pool_total_weight":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":["U256"]},"get_pool_weight":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U256"]},"get_pools_by_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":[{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]},"get_token_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16"],"return":["U256"]},"register_pool":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16"],"return":[]},"register_pool_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x1","module":"ascii","name":"String","typeArguments":[]}},"U16",{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"remove_liquidity":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U256"],"return":["U256","U256"]},"set_equilibrium_alpha":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},"U16","U256"],"return":[]},"set_equilibrium_lambda":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U256"],"return":[]},"set_pool_weight":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U256"],"return":[]},"zero_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"Liquidity","typeArguments":[]}}]}}},"rates":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"rates","friends":[],"structs":{},"exposedFunctions":{"calculate_average_liquidity":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256","U256"],"return":["U256"]},"calculate_borrow_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":["U256"]},"calculate_compounded_interest":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256"],"return":["U256"]},"calculate_linear_interest":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256","U256"],"return":["U256"]},"calculate_liquidity_rate":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256","U256"],"return":["U256"]},"calculate_utilization":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"lending_core_storage","name":"Storage","typeArguments":[]}}},"U16","U256"],"return":["U256"]}}},"ray_math":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"ray_math","friends":[],"structs":{},"exposedFunctions":{"log2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256"],"return":["U8"]},"max":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"min":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"ray":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"ray_div":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"ray_ln2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U256"]},"ray_log2":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256"],"return":["U256"]},"ray_mul":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]}}},"remote_gov_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"remote_gov_codec","friends":[],"structs":{},"exposedFunctions":{"decode_relayer_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"encode_relayer_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"get_add_relayer_opcode":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_remove_relayer_opcode":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"scaled_balance":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"scaled_balance","friends":[],"structs":{},"exposedFunctions":{"balance_of":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"burn_scaled":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]},"mint_scaled":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U256","U256"],"return":["U256"]}}},"serde":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"serde","friends":[],"structs":{},"exposedFunctions":{"ascii_to_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U8"],"return":["U8"]},"deserialize_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["Address"]},"deserialize_u128":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U128"]},"deserialize_u128_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U128"]},"deserialize_u16":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U16"]},"deserialize_u256":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U256"]},"deserialize_u256_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U256"]},"deserialize_u64":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U64"]},"deserialize_u8":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U8"]},"deserialize_vector_with_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":[{"Vector":"U8"}]},"get_vector_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Vector":"U8"}}],"return":["U64"]},"hex_str_to_ascii":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U8"],"return":["U8"]},"serialize_address":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"Address"],"return":[]},"serialize_type":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Vector":"U8"}}],"return":[]},"serialize_u128":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U128"],"return":[]},"serialize_u128_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U128"],"return":[]},"serialize_u16":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U16"],"return":[]},"serialize_u256":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U256"],"return":[]},"serialize_u256_with_hex_str":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U256"],"return":[]},"serialize_u64":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U64"],"return":[]},"serialize_u8":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},"U8"],"return":[]},"serialize_vector":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},{"Vector":"U8"}],"return":[]},"serialize_vector_with_length":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Vector":"U8"}},{"Vector":"U8"}],"return":[]},"vector_slice":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Copy"]}],"parameters":[{"Reference":{"Vector":{"TypeParameter":0}}},"U64","U64"],"return":[{"Vector":{"TypeParameter":0}}]},"vector_split":{"visibility":"Public","isEntry":false,"typeParameters":[{"abilities":["Copy","Drop"]}],"parameters":[{"Reference":{"Vector":{"TypeParameter":0}}},{"TypeParameter":0}],"return":[{"Vector":{"Vector":{"TypeParameter":0}}}]}}},"system_codec":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_codec","friends":[],"structs":{},"exposedFunctions":{"decode_bind_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Vector":"U8"}],"return":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"]},"encode_bind_payload":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":["U16","U64",{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U8"],"return":[{"Vector":"U8"}]},"get_binding_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]},"get_unbinding_type":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[],"return":["U8"]}}},"system_core_storage":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_storage","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter"}],"structs":{"Storage":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"app_cap","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}]}},"exposedFunctions":{"get_app_cap":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_core_storage","name":"Storage","typeArguments":[]}}}],"return":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}}]},"initialize_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"TotalAppInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"system_core_wormhole_adapter":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter","friends":[],"structs":{"SystemCoreEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":{"Vector":"U8"}},{"name":"source_chain_id","type":"U16"},{"name":"user_chain_id","type":"U16"},{"name":"user_address","type":{"Vector":"U8"}},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"bind_user_address":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"unbind_user_address":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_core_storage","name":"Storage","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"system_portal":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal","friends":[],"structs":{"SystemLocalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"user_chain_id","type":"U16"},{"name":"user_address","type":{"Vector":"U8"}},{"name":"call_type","type":"U8"}]},"SystemPortal":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"next_nonce","type":"U64"}]}},"exposedFunctions":{"binding":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_portal","name":"SystemPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"unbinding":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"system_portal","name":"SystemPortal","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"system_portal_v2":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal_v2","friends":[],"structs":{"SystemPortalEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"sender","type":"Address"},{"name":"user_chain_id","type":"U16"},{"name":"user_address","type":{"Vector":"U8"}},{"name":"call_type","type":"U8"}]}},"exposedFunctions":{"binding":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"unbinding":{"visibility":"Private","isEntry":true,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}},"user_manager":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"user_manager","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_core"}],"structs":{"BindUser":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_user_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"dola_user_id","type":"U64"}]},"UnbindUser":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_user_address","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}},{"name":"dola_user_id","type":"U64"}]},"UserAddressCatalog":{"abilities":{"abilities":["Store"]},"typeParameters":[],"fields":[{"name":"user_address_to_user_id","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U64"]}}},{"name":"user_id_to_addresses","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U64",{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]}}}]},"UserManagerInfo":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"user_address_catalog","type":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserAddressCatalog","typeArguments":[]}}},{"name":"chain_id_to_group","type":{"Struct":{"address":"0x2","module":"table","name":"Table","typeArguments":["U16","U16"]}}}]}},"exposedFunctions":{"bind_user_address":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[]},"get_dola_user_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["U64"]},"get_user_addresses":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U64"],"return":[{"Vector":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}}]},"is_dola_user":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":["Bool"]},"process_group_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}]},"register_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16","U16"],"return":[]},"register_dola_user_id":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[]},"unbind_user_address":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}}],"return":[]},"unregister_dola_chain_id":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},"U16"],"return":[]}}},"wormhole_adapter_core":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_core","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_core_wormhole_adapter"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_core_wormhole_adapter"}],"structs":{"AddRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"new_relayer","type":"Address"}]},"CoreState":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"wormhole_emitter","type":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"emitter","name":"EmitterCap","typeArguments":[]}}},{"name":"consumed_vaas","type":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"name":"registered_emitters","type":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}}]},"DeleteBridge":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"wormhole_emitter_chain","type":"U16"},{"name":"wormhole_emitter_address","type":{"Vector":"U8"}}]},"DeleteOwner":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"DeleteSpender":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"RegisterBridge":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"wormhole_emitter_chain","type":"U16"},{"name":"wormhole_emitter_address","type":{"Vector":"U8"}}]},"RegisterOwner":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"RegisterSpender":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"dola_chain_id","type":"U16"},{"name":"dola_contract","type":"U256"}]},"Relayer":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"RemoveRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"removed_relayer","type":"Address"}]}},"exposedFunctions":{"add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"Address"],"return":[]},"delete_remote_bridge":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16"],"return":[]},"initialize_cap_with_governance":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"receive_deposit":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"user_manager","name":"UserManagerInfo","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U256",{"Vector":"U8"}]},"receive_message":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Vector":"U8"}]},"receive_withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Vector":"U8"}]},"register_remote_bridge":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16",{"Vector":"U8"}],"return":[]},"remote_add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_delete_owner":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_delete_spender":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_register_owner":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_register_spender":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remote_remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"U16",{"Vector":"U8"},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[]},"remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},"Address"],"return":[]},"send_withdraw":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_core","name":"CoreState","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"app_manager","name":"AppCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"pool_manager","name":"PoolManagerInfo","typeArguments":[]}}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_address","name":"DolaAddress","typeArguments":[]}},"U16","U64","U256",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":["U64"]}}},"wormhole_adapter_pool":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_pool","friends":[{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"lending_portal_v2"},{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"system_portal_v2"}],"structs":{"AddRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"new_relayer","type":"Address"}]},"Nonce":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"PoolGenesis":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"creator","type":"Address"},{"name":"is_init","type":"Bool"}]},"PoolState":{"abilities":{"abilities":["Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}},{"name":"wormhole_emitter","type":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"emitter","name":"EmitterCap","typeArguments":[]}}},{"name":"consumed_vaas","type":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"name":"registered_emitters","type":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}}]},"PoolWithdrawEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"nonce","type":"U64"},{"name":"source_chain_id","type":"U16"},{"name":"dst_chain_id","type":"U16"},{"name":"pool_address","type":{"Vector":"U8"}},{"name":"receiver","type":{"Vector":"U8"}},{"name":"amount","type":"U64"}]},"RelayEvent":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"sequence","type":"U64"},{"name":"nonce","type":"U64"},{"name":"fee_amount","type":"U64"},{"name":"app_id","type":"U16"},{"name":"call_type","type":"U8"}]},"Relayer":{"abilities":{"abilities":["Copy","Drop","Store"]},"typeParameters":[],"fields":[{"name":"dummy_field","type":"Bool"}]},"RemoveRelayer":{"abilities":{"abilities":["Copy","Drop"]},"typeParameters":[],"fields":[{"name":"removed_relayer","type":"Address"}]}},"exposedFunctions":{"add_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},"Address"],"return":[]},"emit_relay_event":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":["U64","U64","U64","U16","U8"],"return":[]},"get_nonce":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}}],"return":["U64"]},"get_relay_fee_amount":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},"U64",{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},"U64"]},"initialize":{"visibility":"Public","isEntry":true,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolGenesis","typeArguments":[]}}},"U16",{"Vector":"U8"},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"receive_withdraw":{"visibility":"Public","isEntry":true,"typeParameters":[{"abilities":[]}],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceGenesis","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]},"remove_relayer":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"genesis","name":"GovernanceCap","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},"Address"],"return":[]},"send_deposit":{"visibility":"Friend","isEntry":false,"typeParameters":[{"abilities":[]}],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"dola_pool","name":"Pool","typeArguments":[{"TypeParameter":0}]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"TypeParameter":0}]}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":["U64"]},"send_message":{"visibility":"Friend","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_pool","name":"PoolState","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Struct":{"address":"0x2","module":"coin","name":"Coin","typeArguments":[{"Struct":{"address":"0x2","module":"sui","name":"SUI","typeArguments":[]}}]}},"U16",{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":["U64"]}}},"wormhole_adapter_verify":{"fileFormatVersion":6,"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","name":"wormhole_adapter_verify","friends":[],"structs":{"Unit":{"abilities":{"abilities":["Store","Key"]},"typeParameters":[],"fields":[{"name":"id","type":{"Struct":{"address":"0x2","module":"object","name":"UID","typeArguments":[]}}}]}},"exposedFunctions":{"assert_known_emitter":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"Reference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}}],"return":[]},"get_registered_emitter":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"Reference":"U16"}],"return":[{"Struct":{"address":"0x1","module":"option","name":"Option","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}]},"parse_and_verify":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}]},"parse_verify_and_replay_protect":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"state","name":"State","typeArguments":[]}}},{"Reference":{"Struct":{"address":"0x2","module":"vec_map","name":"VecMap","typeArguments":["U16",{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"external_address","name":"ExternalAddress","typeArguments":[]}}]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"Vector":"U8"},{"Reference":{"Struct":{"address":"0x2","module":"clock","name":"Clock","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}]},"replay_protect":{"visibility":"Public","isEntry":false,"typeParameters":[],"parameters":[{"MutableReference":{"Struct":{"address":"0x2","module":"object_table","name":"ObjectTable","typeArguments":[{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"bytes32","name":"Bytes32","typeArguments":[]}},{"Struct":{"address":"0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e","module":"wormhole_adapter_verify","name":"Unit","typeArguments":[]}}]}}},{"Reference":{"Struct":{"address":"0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a","module":"vaa","name":"VAA","typeArguments":[]}}},{"MutableReference":{"Struct":{"address":"0x2","module":"tx_context","name":"TxContext","typeArguments":[]}}}],"return":[]}}}}',
 );
 
 export function loadAllTypes(coder: MoveCoder) {
   _0x2.loadAllTypes(coder);
   _0x1.loadAllTypes(coder);
   _0x5306f64e312b581766351c07af79c72fcb1cd25147157fdc2f8ad76de9a3fb6a.loadAllTypes(
-    coder
+    coder,
   );
   _0xb53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302.loadAllTypes(
-    coder
+    coder,
   );
   for (const m of Object.values(MODULES)) {
-    coder.load(m as any);
+    coder.load(
+      m as any,
+      "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e",
+    );
   }
 }
 
