@@ -11,7 +11,7 @@
     "postinstall": "sentio gen"
   },
   "dependencies": {
-    "@sentio/sdk": "2.22.2",
+    "@sentio/sdk": "2.31.0",
     "ethers": "^6.7.0"
   },
   "devDependencies": {
