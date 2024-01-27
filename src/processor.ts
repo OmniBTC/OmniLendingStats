@@ -221,9 +221,9 @@ lending_logic
             // Reserve stats event
             const reserve_stats_events = ctx.transaction.events!.filter(
                 (event: { type: any }) =>
-                    event.type ==
-                    "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent" || event.type ==
-                    "0x2c674f67f73bb32ea94123e4a0c509de9f529a2423818b275d9a9019ad83cd04::lending_logic::LendingReserveStatsEvent"
+                    (event.type == "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingReserveStatsEvent")
+                    ||
+                    (event.type == "0x2c674f67f73bb32ea94123e4a0c509de9f529a2423818b275d9a9019ad83cd04::lending_logic::LendingReserveStatsEvent")
             );
 
             for (const reserve_stats_event of reserve_stats_events) {
@@ -271,9 +271,9 @@ lending_logic
 
             const user_stats_events = ctx.transaction.events!.filter(
                 (event: { type: any, parsedJson: any }) =>
-                    event.type ==
-                    "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent" || event.type ==
-                    "0x2c674f67f73bb32ea94123e4a0c509de9f529a2423818b275d9a9019ad83cd04::lending_logic::LendingUserStatsEvent"
+                    (event.type == "0x826915f8ca6d11597dfe6599b8aa02a4c08bd8d39674855254a06ee83fe7220e::lending_logic::LendingUserStatsEvent")
+                    ||
+                    (event.type == "0x2c674f67f73bb32ea94123e4a0c509de9f529a2423818b275d9a9019ad83cd04::lending_logic::LendingUserStatsEvent")
             );
 
             for (const user_stats_event of user_stats_events) {
