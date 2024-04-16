@@ -1,8 +1,8 @@
 import {SuiContext, SuiNetwork} from "@sentio/sdk/sui";
 import {pool} from "./types/sui/0x1eabed72c53feb3805120a081dc15963c204dc8d091542592abaf7a35689b2fb.js";
-import {CLMM_MAINNET, LENDING, SWAP} from "./helper/address.js";
+import {CLMM_MAINNET, LENDING, SWAP, LENDING_BOOOST} from "./helper/address.js";
 import {calculateSwapVol_USD, getOrCreatePool} from "./helper/swap.js";
-import {lending_core_wormhole_adapter, lending_logic, user_manager} from "./types/sui/omnilending.js";
+import {lending_core_wormhole_adapter, lending_logic, user_manager, boost} from "./types/sui/omnilending.js";
 import {
     CALL_TYPE_TO_NAME,
     convertToAddress,
@@ -10,6 +10,7 @@ import {
     POOL_ID_TO_SYMBOL,
     POOL_ID_TO_USER_COLLATERAL,
     RAY,
+    SUI_DECIMALS,
     TREASURY_FACTOR,
 } from "./helper/lending.js";
 import {getPriceBySymbol} from "@sentio/sdk/utils";
@@ -48,6 +49,45 @@ async function queryTreasuryFee(
         value: data.collateral_value
     };
 }
+
+boost.bind({
+    address: LENDING_BOOOST,
+    network: SuiNetwork.MAIN_NET,
+    startCheckpoint: 9897791n
+}).onEventClaimRewardEvent(async (event, ctx) => {
+    console.log("Add ClaimReward Event:", ctx.transaction.digest)
+    const sender = event.data_decoded.sender;
+    const token = event.data_decoded.token;
+    const user_id = event.data_decoded.dola_user_id;
+    const pool_id = event.data_decoded.dola_pool_id;
+    const reward_action = event.data_decoded.reward_action;
+    const symbol = POOL_ID_TO_SYMBOL.get(pool_id) as string;
+    const amount = Number(event.data_decoded.amount) / Math.pow(10, SUI_DECIMALS);
+
+    let reward_action_name: string;
+    if (reward_action == 0) {
+        reward_action_name = "supply"
+    } else if (reward_action == 2) {
+        reward_action_name = "borrow"
+    } else {
+        reward_action_name = "unknow"
+    }
+
+    ctx.eventLogger.emit("ClaimRewardEvent", {
+        project: "omnilending",
+        distinctId: sender,
+        sender,
+        user_id,
+        pool_id,
+        symbol,
+        amount,
+        reward_token: token,
+        reward_action,
+        reward_action_name,
+        message: `User ${user_id} claim ${amount} ${token} for ${reward_action_name} ${symbol}`,
+    });
+});
+ 
 
 pool
     .bind({

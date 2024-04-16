@@ -1,5 +1,7 @@
 export const LENDING_DECIMALS = 8;
 
+export const SUI_DECIMALS = 9;
+
 export const RAY = 27;
 
 export const POOL_ID_TO_SYMBOL = new Map<number, string>([
