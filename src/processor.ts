@@ -339,7 +339,7 @@ lending_logic
             console.log("warning:", e)
         }
 
-    });
+    }, {allEvents: true});
 
 user_manager
     .bind({
