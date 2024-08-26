@@ -287,6 +287,8 @@ lending_logic
 
                 const borrow_rate = Number(parsedJson.borrow_rate) / Math.pow(10, RAY);
                 const supply_rate = Number(parsedJson.supply_rate) / Math.pow(10, RAY);
+                const borrow_index = Number(parsedJson.borrow_index) / Math.pow(10, RAY);
+                const supply_index = Number(parsedJson.supply_index) / Math.pow(10, RAY);
 
                 ctx.eventLogger.emit("LendReserve", {
                     project: "omnilending",
@@ -295,7 +297,9 @@ lending_logic
                     otoken_value,
                     dtoken_amount,
                     dtoken_value,
+                    borrow_index,
                     borrow_rate,
+                    supply_index,
                     supply_rate,
                     call_name,
                     symbol,
